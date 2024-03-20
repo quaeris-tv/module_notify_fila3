@@ -26,7 +26,7 @@ class GenerateSitemapTest extends TestCase
          *
          * @todo Correctly instantiate tested object to use it.
          */
-        $this->generateSitemap = new GenerateSitemap();
+        $this->generateSitemap = new GenerateSitemap;
     }
 
     protected function tearDown(): void
