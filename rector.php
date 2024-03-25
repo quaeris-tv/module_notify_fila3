@@ -18,6 +18,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->skip(
         [
+            './vendor/',
             '*/docs',
             '*/vendor',
         ]
