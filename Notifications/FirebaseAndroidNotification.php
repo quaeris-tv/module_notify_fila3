@@ -35,7 +35,7 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable the entity to be notified
+     * @param  mixed  $notifiable  the entity to be notified
      *
      * @throws \InvalidArgumentException if no delivery channels are available for the notifiable entity
      */
@@ -52,7 +52,7 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
     /**
      * A description of the entire PHP function.
      *
-     * @param  mixed  $notifiable the entity to be notified
+     * @param  mixed  $notifiable  the entity to be notified
      * @return CloudMessage
      */
     public function toFirebase($notifiable)
