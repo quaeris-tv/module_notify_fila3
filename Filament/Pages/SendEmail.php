@@ -30,7 +30,6 @@ class SendEmail extends Page implements HasForms
 
     public ?array $emailData = [];
 
-    // protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     protected static string $view = 'notify::filament.pages.send-email';
