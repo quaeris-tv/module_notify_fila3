@@ -16,7 +16,7 @@ class GenerateSitemap
         '*/404',
     ];
 
-    public function handle(Jigsaw $jigsaw): void
+    public function handle(Jigsaw $jigsaw)
     {
         $baseUrl = $jigsaw->getConfig('baseUrl');
 

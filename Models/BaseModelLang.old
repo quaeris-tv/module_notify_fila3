@@ -30,22 +30,62 @@ abstract class BaseModelLang extends Model {
      * @var bool
      */
     public static $snakeAttributes = true;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 55697fb0517e7e82ee60bd37b87965397cd21964
     /** @var int */
     protected $perPage = 30;
 
     /** @var string */
     protected $connection = 'notify';
 
+<<<<<<< HEAD
     /** @var array<string, string> */
     protected $casts = [
         // 'published_at' => 'datetime:Y-m-d', // da verificare
     ];
+=======
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+
+        // 'published_at' => 'datetime:Y-m-d', // da verificare
+
+        ];
+    }
+=======
+=======
+>>>>>>> a7e20963 (first)
+
+    protected $perPage = 30;
+
+    protected $connection = 'notify';
+
+    /**
+     * @var array<string, string>
+     */
+    protected $casts = [
+        // 'published_at' => 'datetime:Y-m-d', // da verificare
+    ];
+<<<<<<< HEAD
+>>>>>>> 25230a84 (first)
+=======
+>>>>>>> a7e20963 (first)
+>>>>>>> 55697fb0517e7e82ee60bd37b87965397cd21964
 
     /**
      * @var string[]
      */
     protected $dates = ['published_at', 'created_at', 'updated_at'];
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 55697fb0517e7e82ee60bd37b87965397cd21964
     /** @var string */
     protected $primaryKey = 'id';
 
@@ -53,11 +93,50 @@ abstract class BaseModelLang extends Model {
     public $incrementing = true;
 
     /** @var  array<int, string> */
+<<<<<<< HEAD
+=======
+=======
+=======
+>>>>>>> a7e20963 (first)
+    /**
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * @var bool
+     */
+    public $incrementing = true;
+
+    /**
+     * @var array<int, string>
+     */
+<<<<<<< HEAD
+>>>>>>> 25230a84 (first)
+=======
+>>>>>>> a7e20963 (first)
+>>>>>>> 55697fb0517e7e82ee60bd37b87965397cd21964
     protected $hidden = [
         // 'password'
     ];
 
+<<<<<<< HEAD
     /** @var bool */
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    /** @var bool */
+=======
+    /**
+     * @var bool
+     */
+>>>>>>> 25230a84 (first)
+=======
+    /**
+     * @var bool
+     */
+>>>>>>> a7e20963 (first)
+>>>>>>> 55697fb0517e7e82ee60bd37b87965397cd21964
     public $timestamps = true;
 
     // -----------

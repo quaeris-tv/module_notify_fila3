@@ -17,7 +17,7 @@ class CreateNotifyContactsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table): void {
+            function (Blueprint $table): void {
                 $table->increments('id');
                 $table->morphs('model');
                 $table->string('contact_type')->nullable();

@@ -1,7 +1,6 @@
 <?php
 
 // https://blog.quickadminpanel.com/laravel-notifications-with-database-driver-internal-messages/
-
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
@@ -16,7 +15,7 @@ class CreateNotificationsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table): void {
+            function (Blueprint $table): void {
                 $table->uuid('id')->primary();
                 $table->string('type');
                 $table->morphs('notifiable');

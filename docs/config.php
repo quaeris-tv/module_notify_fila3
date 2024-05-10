@@ -15,7 +15,7 @@ return [
 
     'collections' => [
         'posts' => [
-            'path' => static function ($page) {
+            'path' => function ($page) {
                 // return $page->lang.'/posts/'.Str::slug($page->getFilename());
                 // return 'posts/' . ($page->featured ? 'featured/' : '') . Str::slug($page->getFilename());
 
@@ -23,7 +23,7 @@ return [
             },
         ],
         'docs' => [
-            'path' => static function ($page) {
+            'path' => function ($page) {
                 // return $page->lang.'/docs/'.Str::slug($page->getFilename());
                 return 'docs/'.Str::slug($page->getFilename());
             },

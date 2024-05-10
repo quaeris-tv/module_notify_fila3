@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Services\MailEngines;
 
+use ErrorException;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 
 // ---------CSS------------
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\Mail;
  */
 class MailtrapEngine
 {
+    private static ?self $instance = null;
+
     public ?string $from = null;
 
     public string $to;
@@ -24,8 +28,6 @@ class MailtrapEngine
     public string $driver;
 
     public ?string $body = null;
-
-    private static ?self $instance = null;
 
     public static function getInstance(): self
     {
@@ -64,12 +66,9 @@ class MailtrapEngine
         // Mail::raw('Hello World!', function($msg) {$msg->to('vair81@gmail.com')->subject('Test Email'); });
 
         // try {
-        Mail::raw(
-            (string) $this->body,
-            function ($msg): void {
-                $msg->to($this->to)->subject('Test Email');
-            }
-        );
+        Mail::raw((string) $this->body, function ($msg): void {
+            $msg->to($this->to)->subject('Test Email');
+        });
         // Dead catch - ErrorException is never thrown in the try block.
         // } catch (ErrorException $e) {
         //    throw new Exception('['.__LINE__.']['.__FILE__.']');

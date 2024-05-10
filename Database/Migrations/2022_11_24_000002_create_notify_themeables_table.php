@@ -14,7 +14,7 @@ class CreateNotifyThemeablesTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table): void {
+            function (Blueprint $table): void {
                 $table->increments('id');
                 $table->nullableMorphs('model');
                 $table->timestamps();
