@@ -2,6 +2,11 @@
 /**
  * @see https://github.com/spatie/laravel-health/discussions/153
  * @see https://yalamati.medium.com/using-two-different-smtp-mailers-in-laravel-6bd1e6646996
+ * @see https://symfony.com/doc/current/mailer.html
+ * @see https://stackoverflow.com/questions/26546824/multiple-mail-configurations
+ * @see https://azafocossa.medium.com/how-to-set-two-or-more-env-variables-for-email-in-laravel-63e603d383f
+ * @see https://github.com/molteber/puz-dynamic-mail
+ * @see https://laravel-news.com/allowing-users-to-send-email-with-their-own-smtp-settings-in-laravel
  */
 
 declare(strict_types=1);
@@ -19,6 +24,7 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Modules\Notify\Datas\EmailData;
@@ -26,6 +32,7 @@ use Modules\Notify\Emails\EmailDataEmail;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
+use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;
 
 /**
  * @property ComponentContainer $emailForm
@@ -106,6 +113,7 @@ class TestSmtpPage extends Page implements HasForms
     {
         $data = $this->emailForm->getState();
         // dddx($data);
+        // Swift_SmtpTransport
         try {
             $transport = new EsmtpTransport($data['mail_host'], intval($data['mail_port']), $data['mail_encryption']);
             if (null !== $data['mail_username'] && null !== $data['mail_password']) {
@@ -113,17 +121,45 @@ class TestSmtpPage extends Page implements HasForms
                 $transport->setPassword($data['mail_password']);
             }
             $transport->start();
-            dddx('ok');
         } catch (\Exception $e) {
             // return $result->failed($e->getMessage());
             dddx($e->getMessage());
         }
         $email_data = EmailData::from($data);
-
+        /*
         Mail::to($data['email_to'])->send(
             new EmailDataEmail($email_data)
         );
+        */
+        /*
+        $config = [
+            'driver' => 'smtp',
+            'host' => 'smtp1.example.com',
+            'username' => foo',
+            'password' => 'bar'
+        ]
 
+        Config::set('mail', $config);
+        */
+
+        /*
+        https://stackoverflow.com/questions/75950262/change-laravel-mail-configuration-during-runtime
+        $mailer = new Mailer($transport);
+        $mailable = (new SymfonyEmail())
+            ->from($email->email)
+            ->bcc('test@test.com')
+            ->subject($request->subject)
+            ->html('email body');
+        $mailer->send($mailable);
+
+         $mailer->send($this->buildView(), $this->buildViewData(), function ($message) use($config) {
+            $message->from([$config['from']['address'] => $config['from']['name']]);
+            $this->buildFrom($message)
+                 ->buildRecipients($message)
+                 ->buildSubject($message)
+                 ->buildAttachments($message)
+                 ->runCallbacks($message);
+        */
         Notification::make()
             ->success()
             // ->title(__('filament-panels::pages/auth/edit-profile.notifications.saved.title'))
