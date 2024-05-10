@@ -78,9 +78,9 @@ class SendEmailParameters extends Page implements HasForms
     public function sendEmail(): void
     {
         $data = $this->emailForm->getState();
-        // dddx($data);
         $email_data = EmailData::from($data);
 
+        Config::set('mail.default', $data['mail_mailer']);
         Config::set('mail.mailers.smtp.transport', $data['mail_mailer']);
         Config::set('mail.mailers.smtp.host', $data['mail_host']); 
         Config::set('mail.mailers.smtp.port', $data['mail_port']); 
@@ -88,16 +88,7 @@ class SendEmailParameters extends Page implements HasForms
         Config::set('mail.mailers.smtp.username', $data['mail_username']); 
         Config::set('mail.mailers.smtp.password', $data['mail_password']); 
 
-
-        dddx(config('mail'));
-
-        // $app = App::getInstance(); 
-        // $app['swift.transport'] = $app->share(function ($app) { 
-        //     return new TransportManager($app); 
-        // }); 
-        // $mailer = new \Swift_Mailer($app['swift.transport']->driver()); 
-        // \Mail::setSwiftMailer($mailer);
-
+        // dddx(config('mail'));
 
         Mail::to($data['email_to'])->send(
             new EmailDataEmail($email_data)
