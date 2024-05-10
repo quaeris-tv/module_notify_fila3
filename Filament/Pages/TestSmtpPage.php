@@ -7,6 +7,13 @@
  * @see https://azafocossa.medium.com/how-to-set-two-or-more-env-variables-for-email-in-laravel-63e603d383f
  * @see https://github.com/molteber/puz-dynamic-mail
  * @see https://laravel-news.com/allowing-users-to-send-email-with-their-own-smtp-settings-in-laravel
+ * @see https://www.reddit.com/r/laravel/comments/qe2jre/using_different_smtp_configuration_sending/?rdt=64778&onetap_auto=true&one_tap=true
+ * @see https://benjamincrozat.com/laravel-emails-mailtrap-smtp
+ * @see https://docs.sendgrid.com/for-developers/sending-email/laravel
+ * @see https://github.com/iwasherefirst2/laravel-multimail
+ * @see https://blog.genijaho.dev/allowing-users-to-send-emails-with-their-own-smtp-settings-in-laravel-9
+ * @see https://mailazy.com/docs/guide/smtp/integration-with-laravel/
+ * @see https://www.meghrajtechnosoft.com/sending-mail-with-dynamic-smtp-configuration/
  */
 
 declare(strict_types=1);
