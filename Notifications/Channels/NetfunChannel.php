@@ -20,7 +20,7 @@ class NetfunChannel
         // Send notification to the $notifiable instance...
         $data = app(NetfunSendAction::class)->execute($smsData);
 
-        if ($notifiable instanceof ModelContactContract) {
+        if ($notifiable instanceof CanThemeNotificationContract) {
             $notifiable->increase('sms', $data);
             /*
             $data['sms_sent_at'] = now();
