@@ -7,7 +7,7 @@ namespace Modules\Notify\Notifications\Channels;
 use Modules\Notify\Actions\NetfunSendAction;
 use Modules\Notify\Contracts\CanThemeNotificationContract;
 use Modules\Notify\Notifications\ThemeNotification;
-use Modules\Xot\Contracts\ModelContactContract;
+// use Modules\Xot\Contracts\ModelContactContract;
 
 class NetfunChannel
 {
