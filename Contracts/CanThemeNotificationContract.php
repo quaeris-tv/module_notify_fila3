@@ -22,4 +22,6 @@ interface CanThemeNotificationContract
      * @return mixed|void
      */
     public function sendSmsCallback();
+
+    public function increase(string $what, array $data): void;
 }

@@ -40,6 +40,7 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;
 use Symfony\Component\Mime\Email;
+use Webmozart\Assert\Assert;
 
 /**
  * @property ComponentContainer $emailForm
@@ -144,11 +145,13 @@ class TestSmtpPage extends Page implements HasForms
 
         // Parameter #1 ...$addresses of method Symfony\Component\Mime\Email::from() expects
         // string|Symfony\Component\Mime\Address, mixed given.
+        Assert::string($email_from = $data['email_from']);
+        Assert::string($email_to = $data['email_to']);
 
         $mailer = new Mailer($transport);
         $email = (new Email())
-            ->from($data['email_from'])
-            ->to($data['email_to'])
+            ->from($email_from)
+            ->to($email_to)
             ->subject($email_data->subject)
             ->text(strip_tags($email_data->body))
             ->html($email_data->body);
