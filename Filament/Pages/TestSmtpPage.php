@@ -31,15 +31,15 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Modules\Notify\Datas\EmailData;
-use Modules\Notify\Emails\EmailDataEmail;
+use Modules\Notify\Datas\SmtpData;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
+use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;
+use Symfony\Component\Mime\Email;
 
 /**
  * @property ComponentContainer $emailForm
@@ -50,6 +50,8 @@ class TestSmtpPage extends Page implements HasForms
     use NavigationLabelTrait;
 
     public ?array $emailData = [];
+
+    public ?string $error_message = null;
 
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
@@ -76,28 +78,33 @@ class TestSmtpPage extends Page implements HasForms
         return $form
             ->schema(
                 [
-                    Section::make()
+                    Section::make('SMTP')
                         // ->description('Update your account\'s profile information and email address.')
                         ->schema(
                             [
-                                Forms\Components\TextInput::make('mail_driver')
-                                    ->default(env('MAIL_DRIVER')),
-                                Forms\Components\TextInput::make('mail_host')
+                                // Forms\Components\TextInput::make('driver')
+                                //    ->default(env('MAIL_DRIVER', 'smtp')),
+                                Forms\Components\TextInput::make('host')
                                     ->default(env('MAIL_HOST')),
-                                Forms\Components\TextInput::make('mail_port')
+                                Forms\Components\TextInput::make('port')
                                     ->numeric()
                                     ->default(env('MAIL_PORT')),
-                                Forms\Components\TextInput::make('mail_username')
+                                Forms\Components\TextInput::make('username')
                                     ->default(env('MAIL_USERNAME')),
-                                Forms\Components\TextInput::make('mail_password')
+                                Forms\Components\TextInput::make('password')
                                     ->default(env('MAIL_PASSWORD')),
-                                Forms\Components\TextInput::make('mail_encryption')
+                                Forms\Components\TextInput::make('encryption')
                                     ->default(env('MAIL_ENCRYPTION')),
                             ])->columns(3),
-                    Section::make()
+                    Section::make('MAIL')
                     // ->description('Update your account\'s profile information and email address.')
                     ->schema(
                         [
+                            Forms\Components\TextInput::make('email_from')
+                                // ->unique(ignoreRecord: true)
+                                ->default($email)
+                                ->email()
+                                ->required(),
                             Forms\Components\TextInput::make('email_to')
                                 // ->unique(ignoreRecord: true)
                                 ->default($email)
@@ -108,9 +115,10 @@ class TestSmtpPage extends Page implements HasForms
                                 ->required(),
                             Forms\Components\RichEditor::make('body')
                                 ->default('test body')
-                                ->required(),
+                                ->required()
+                                ->columnSpanFull(),
                         ]
-                    ),
+                    )->columns(3),
                 ]
             )
             ->statePath('emailData');
@@ -119,54 +127,31 @@ class TestSmtpPage extends Page implements HasForms
     public function sendEmail(): void
     {
         $data = $this->emailForm->getState();
-        // dddx($data);
+        $smtp = SmtpData::from($data);
+
         // Swift_SmtpTransport
         try {
-            $transport = new EsmtpTransport($data['mail_host'], intval($data['mail_port']), $data['mail_encryption']);
-            if (null !== $data['mail_username'] && null !== $data['mail_password']) {
-                $transport->setUsername($data['mail_username']);
-                $transport->setPassword($data['mail_password']);
-            }
+            $transport = $smtp->getTransport();
             $transport->start();
+            $this->error_message = null;
         } catch (\Exception $e) {
-            // return $result->failed($e->getMessage());
-            dddx($e->getMessage());
+            $this->error_message = $e->getMessage();
+
+            return;
         }
+
         $email_data = EmailData::from($data);
-        /*
-        Mail::to($data['email_to'])->send(
-            new EmailDataEmail($email_data)
-        );
-        */
-        /*
-        $config = [
-            'driver' => 'smtp',
-            'host' => 'smtp1.example.com',
-            'username' => foo',
-            'password' => 'bar'
-        ]
 
-        Config::set('mail', $config);
-        */
-
-        /*
-        https://stackoverflow.com/questions/75950262/change-laravel-mail-configuration-during-runtime
         $mailer = new Mailer($transport);
-        $mailable = (new SymfonyEmail())
-            ->from($email->email)
-            ->bcc('test@test.com')
-            ->subject($request->subject)
-            ->html('email body');
-        $mailer->send($mailable);
+        $email = (new Email())
+            ->from($data['email_from'])
+            ->to($data['email_to'])
+            ->subject($email_data->subject)
+            ->text(strip_tags($email_data->body))
+            ->html($email_data->body);
 
-         $mailer->send($this->buildView(), $this->buildViewData(), function ($message) use($config) {
-            $message->from([$config['from']['address'] => $config['from']['name']]);
-            $this->buildFrom($message)
-                 ->buildRecipients($message)
-                 ->buildSubject($message)
-                 ->buildAttachments($message)
-                 ->runCallbacks($message);
-        */
+        $mailer->send($email);
+
         Notification::make()
             ->success()
             // ->title(__('filament-panels::pages/auth/edit-profile.notifications.saved.title'))

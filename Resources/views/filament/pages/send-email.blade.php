@@ -2,7 +2,7 @@
 
     <x-filament-panels::form wire:submit="sendEmail()">
         {{ $this->emailForm }}
-
+        {{ $error_message ?? '--' }}
         <x-filament-panels::form.actions
             :actions="$this->getEmailFormActions()"
         />
