@@ -142,6 +142,9 @@ class TestSmtpPage extends Page implements HasForms
 
         $email_data = EmailData::from($data);
 
+        // Parameter #1 ...$addresses of method Symfony\Component\Mime\Email::from() expects
+        // string|Symfony\Component\Mime\Address, mixed given.
+
         $mailer = new Mailer($transport);
         $email = (new Email())
             ->from($data['email_from'])
