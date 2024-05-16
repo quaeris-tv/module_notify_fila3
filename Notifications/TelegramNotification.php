@@ -47,7 +47,7 @@ class TelegramNotification extends Notification
         return [];
     }
 
-    public function toTelegram($notifiable)
+    public function toTelegram(?object $notifiable): TelegramMessage
     {
         // $url = url('/invoice/'.$this->invoice->id);
         $url = '#';
