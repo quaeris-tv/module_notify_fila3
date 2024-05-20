@@ -39,6 +39,7 @@ use Modules\Xot\Datas\XotData;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\Smtp\SmtpTransport;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Webmozart\Assert\Assert;
 
@@ -101,11 +102,14 @@ class TestSmtpPage extends Page implements HasForms
                     // ->description('Update your account\'s profile information and email address.')
                     ->schema(
                         [
-                            Forms\Components\TextInput::make('email_from')
+                            Forms\Components\TextInput::make('email_from_address')
                                 // ->unique(ignoreRecord: true)
-                                ->default($email)
+                                ->default(env('MAIL_FROM_ADDRESS', $email))
                                 ->email()
                                 ->required(),
+                            Forms\Components\TextInput::make('email_from_name')
+                                // ->unique(ignoreRecord: true)
+                                ->default(env('MAIL_FROM_NAME')),
                             Forms\Components\TextInput::make('email_to')
                                 // ->unique(ignoreRecord: true)
                                 ->default($email)
@@ -145,18 +149,25 @@ class TestSmtpPage extends Page implements HasForms
 
         // Parameter #1 ...$addresses of method Symfony\Component\Mime\Email::from() expects
         // string|Symfony\Component\Mime\Address, mixed given.
-        Assert::string($email_from = $data['email_from']);
+        Assert::string($email_from_address = $data['email_from_address']);
         Assert::string($email_to = $data['email_to']);
+
+        $from = new Address($email_from_address, $data['email_from_name']);
 
         $mailer = new Mailer($transport);
         $email = (new Email())
-            ->from($email_from)
+            ->from($from)
             ->to($email_to)
             ->subject($email_data->subject)
             ->text(strip_tags($email_data->body))
             ->html($email_data->body);
+        try {
+            $mailer->send($email);
+        } catch (\Exception $e) {
+            $this->error_message = $e->getMessage();
 
-        $mailer->send($email);
+            return;
+        }
 
         Notification::make()
             ->success()
