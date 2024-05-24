@@ -40,6 +40,7 @@
         "illuminate/contracts": "*",
         "illuminate/support": "*",
         "kreait/laravel-firebase": "^5.3",
+        "laravel-notification-channels/telegram": "^5.0",
         "laraxot/module_media_fila3": "dev-master",
         "laraxot/module_xot_fila3": "dev-master",
         "phpdocumentor/type-resolver": "*",
