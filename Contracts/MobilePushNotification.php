@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Contracts;
 
+use Illuminate\Database\Eloquent\Model;
 use Kreait\Firebase\Messaging\Message;
 
+/**
+ * phpstan-require-extends Model
+ * Interface Modules\Notify\Contracts\MobilePushNotification requires
+ * implementing class to extend Illuminate\Database\Eloquent\Model,
+ * but Modules\Notify\Notifications\FirebaseAndroidNotification does not.
+ */
 interface MobilePushNotification
 {
     /**

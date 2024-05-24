@@ -7,6 +7,9 @@ namespace Modules\Notify\Contracts;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Datas\NotificationData;
 
+/**
+ * phpstan-require-extends Model.
+ */
 interface CanThemeNotificationContract
 {
     public function getNotificationData(string $name, array $view_params = []): NotificationData;
