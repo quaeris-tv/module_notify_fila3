@@ -57,12 +57,12 @@
         "nesbot/carbon": "*",
         "nette/php-generator": "*",
         "nunomaduro/phpinsights": "^2.11",
-        "orchestra/testbench": "^8.22",
+        "orchestra/testbench": "*",
         "pestphp/pest": "*",
         "pestphp/pest-plugin-laravel": "*",
         "phpunit/phpunit": "*",
-        "psalm/plugin-laravel": "^2.8",
-        "rector/rector": "^1.0",
+        
+        "rector/rector": "*",
         "spatie/laravel-typescript-transformer": "*",
         "spatie/pest-plugin-snapshots": "*",
         "spatie/phpunit-snapshot-assertions": "*",
@@ -70,7 +70,7 @@
         "symplify/phpstan-rules": "*",
         "thecodingmachine/phpstan-safe-rule": "^1.2",
         "tightenco/duster": "^2.2",
-        "vimeo/psalm": "^5.17"
+        "vimeo/psalm": "*"
     },
     "repositories": [ {
         "type": "path",
