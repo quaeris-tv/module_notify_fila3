@@ -72,22 +72,24 @@
         "tightenco/duster": "^2.2",
         "vimeo/psalm": "*"
     },
-    "repositories": [ {
-        "type": "path",
-        "url": "../Xot"
-    },
-    {
-        "type": "path",
-        "url": "../Tenant"
-    },
-    {
-        "type": "path",
-        "url": "../UI"
-    },
-    {
-        "type": "path",
-        "url": "../Media"
-    }],
+    "repositories": [ 
+        {
+            "type": "path",
+            "url": "../Xot"
+        },
+        {
+            "type": "path",
+            "url": "../Tenant"
+        },
+        {
+            "type": "path",
+            "url": "../UI"
+        },
+        {
+            "type": "path",
+            "url": "../Media"
+        }
+    ],
     "scripts": {
         "post-autoload-dump": [
             "@php vendor/bin/testbench package:discover --ansi"
