@@ -48,7 +48,7 @@
         "laraxot/module_media_fila3": "*",
         "laraxot/module_xot_fila3": "*"
     },
-    "require-dev": {
+    "require-dev_comment": {
         "barryvdh/laravel-ide-helper": "*",
         "driftingly/rector-laravel": "^0.26.2",
         "enlightn/enlightn": "^2.7",
