@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\Filament\Pages;
+namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
@@ -17,11 +17,13 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Stringable;
 use Kreait\Firebase\Messaging\CloudMessage;
+use Modules\Notify\Filament\Clusters\Test;
 use Modules\User\Models\DeviceUser;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
+
+use Webmozart\Assert\Assert;
 
 /**
  * @property ComponentContainer $notificationForm
@@ -29,7 +31,7 @@ use function Safe\json_encode;
 class SendPushNotification extends Page implements HasForms
 {
     use InteractsWithForms;
-    use NavigationLabelTrait;
+    // use NavigationLabelTrait;
 
     public ?array $notificationData = [];
 
@@ -37,6 +39,8 @@ class SendPushNotification extends Page implements HasForms
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     protected static string $view = 'notify::filament.pages.send-push-notification';
+
+    protected static ?string $cluster = Test::class;
 
     public function mount(): void
     {
@@ -64,7 +68,7 @@ class SendPushNotification extends Page implements HasForms
          * ---.
          */
         $filterCallback = function ($item) {
-            return $item->profile != null;
+            return null != $item->profile;
         };
 
         $to = $devices

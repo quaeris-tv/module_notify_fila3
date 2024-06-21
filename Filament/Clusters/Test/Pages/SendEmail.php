@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\Filament\Pages;
+namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Modules\Notify\Datas\EmailData;
 use Modules\Notify\Emails\EmailDataEmail;
+use Modules\Notify\Filament\Clusters\Test;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 
 /**
@@ -26,13 +27,15 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 class SendEmail extends Page implements HasForms
 {
     use InteractsWithForms;
-    use NavigationLabelTrait;
+    // use NavigationLabelTrait;
 
     public ?array $emailData = [];
 
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     protected static string $view = 'notify::filament.pages.send-email';
+
+    protected static ?string $cluster = Test::class;
 
     public function mount(): void
     {

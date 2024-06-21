@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Notify\Filament\Pages;
+namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
@@ -20,6 +20,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
+use Modules\Notify\Filament\Clusters\Test;
 use Modules\Notify\Notifications\TelegramNotification;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use NotificationChannels\Telegram\TelegramMessage;
@@ -30,13 +31,15 @@ use NotificationChannels\Telegram\TelegramMessage;
 class SendTelegram extends Page implements HasForms
 {
     use InteractsWithForms;
-    use NavigationLabelTrait;
+    // use NavigationLabelTrait;
 
     public ?array $emailData = [];
 
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
 
     protected static string $view = 'notify::filament.pages.send-email';
+
+    protected static ?string $cluster = Test::class;
 
     public function mount(): void
     {
