@@ -22,7 +22,7 @@ use Modules\Notify\Filament\Clusters\Test;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 
 /**
- * @property ComponentContainer $emailForm.
+ * @property ComponentContainer $emailForm
  */
 class SendEmail extends Page implements HasForms
 {
