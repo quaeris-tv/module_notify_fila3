@@ -63,7 +63,6 @@
         "pestphp/pest": "*",
         "pestphp/pest-plugin-laravel": "*",
         "phpunit/phpunit": "*",
-        
         "rector/rector": "*",
         "spatie/laravel-typescript-transformer": "*",
         "spatie/pest-plugin-snapshots": "*",
