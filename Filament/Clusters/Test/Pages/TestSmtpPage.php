@@ -103,30 +103,30 @@ class TestSmtpPage extends Page implements HasForms
                             ])->columns(3),
                     Section::make('MAIL')
                     // ->description('Update your account\'s profile information and email address.')
-                    ->schema(
-                        [
-                            Forms\Components\TextInput::make('email_from_address')
-                                // ->unique(ignoreRecord: true)
-                                ->default(env('MAIL_FROM_ADDRESS', $email))
-                                ->email()
-                                ->required(),
-                            Forms\Components\TextInput::make('email_from_name')
-                                // ->unique(ignoreRecord: true)
-                                ->default(env('MAIL_FROM_NAME')),
-                            Forms\Components\TextInput::make('email_to')
-                                // ->unique(ignoreRecord: true)
-                                ->default($email)
-                                ->email()
-                                ->required(),
-                            Forms\Components\TextInput::make('subject')
-                                ->default('test')
-                                ->required(),
-                            Forms\Components\RichEditor::make('body')
-                                ->default('test body')
-                                ->required()
-                                ->columnSpanFull(),
-                        ]
-                    )->columns(3),
+                        ->schema(
+                            [
+                                Forms\Components\TextInput::make('email_from_address')
+                                    // ->unique(ignoreRecord: true)
+                                    ->default(env('MAIL_FROM_ADDRESS', $email))
+                                    ->email()
+                                    ->required(),
+                                Forms\Components\TextInput::make('email_from_name')
+                                    // ->unique(ignoreRecord: true)
+                                    ->default(env('MAIL_FROM_NAME')),
+                                Forms\Components\TextInput::make('email_to')
+                                    // ->unique(ignoreRecord: true)
+                                    ->default($email)
+                                    ->email()
+                                    ->required(),
+                                Forms\Components\TextInput::make('subject')
+                                    ->default('test')
+                                    ->required(),
+                                Forms\Components\RichEditor::make('body')
+                                    ->default('test body')
+                                    ->required()
+                                    ->columnSpanFull(),
+                            ]
+                        )->columns(3),
                 ]
             )
             ->statePath('emailData');
@@ -159,7 +159,7 @@ class TestSmtpPage extends Page implements HasForms
         $from = new Address($email_from_address, $email_from_name);
 
         $mailer = new Mailer($transport);
-        $email = (new Email())
+        $email = (new Email)
             ->from($from)
             ->to($email_to)
             ->subject($email_data->subject)
