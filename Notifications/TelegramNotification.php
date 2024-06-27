@@ -27,7 +27,7 @@ class TelegramNotification extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable the entity to be notified
+     * @param  mixed  $notifiable  the entity to be notified
      *
      * @throws \InvalidArgumentException if no delivery channels are available for the notifiable entity
      */
@@ -66,9 +66,8 @@ class TelegramNotification extends Notification
 
             // (Optional) Inline Buttons
             ->button('View Invoice', $url)
-            ->button('Download Invoice', $url)
-            // (Optional) Inline Button with callback. You can handle callback in your bot instance
-            // ->buttonWithCallback('Confirm', 'confirm_invoice '.$this->invoice->id)
-        ;
+            ->button('Download Invoice', $url);
+        // (Optional) Inline Button with callback. You can handle callback in your bot instance
+        // ->buttonWithCallback('Confirm', 'confirm_invoice '.$this->invoice->id)
     }
 }

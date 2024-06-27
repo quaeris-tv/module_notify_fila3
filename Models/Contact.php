@@ -10,9 +10,9 @@ use Illuminate\Support\Carbon;
 /**
  * Modules\Notify\Models\Contact.
  *
- * @property int         $id
- * @property string      $model_type
- * @property string      $model_id
+ * @property int $id
+ * @property string $model_type
+ * @property string $model_id
  * @property string|null $contact_type
  * @property string|null $value
  * @property string|null $user_id
@@ -23,9 +23,9 @@ use Illuminate\Support\Carbon;
  * @property string|null $created_by
  * @property string|null $token
  * @property string|null $sms_sent_at
- * @property int|null    $sms_count
+ * @property int|null $sms_count
  * @property string|null $mail_sent_at
- * @property int|null    $mail_count
+ * @property int|null $mail_count
  * @property string|null $survey_pdf_id
  * @property string|null $token
  * @property string|null $first_name
@@ -47,37 +47,41 @@ use Illuminate\Support\Carbon;
  * @property string|null $usesleft
  * @property string|null $sms_status_code
  * @property string|null $sms_status_txt
- * @property int|null    $duplicate_count
- * @property int|null    $order_column
+ * @property int|null $duplicate_count
+ * @property int|null $order_column
+ *
  * @method static \Modules\Notify\Database\Factories\ContactFactory factory($count = null, $state = [])
- * @method static Builder|Contact                                   newModelQuery()
- * @method static Builder|Contact                                   newQuery()
- * @method static Builder|Contact                                   query()
- * @method static Builder|Contact                                   whereContactType($value)
- * @method static Builder|Contact                                   whereCreatedAt($value)
- * @method static Builder|Contact                                   whereCreatedBy($value)
- * @method static Builder|Contact                                   whereId($value)
- * @method static Builder|Contact                                   whereModelId($value)
- * @method static Builder|Contact                                   whereModelType($value)
- * @method static Builder|Contact                                   whereLastName($value)
- * @method static Builder|Contact                                   whereMailCount($value)
- * @method static Builder|Contact                                   whereMailSentAt($value)
- * @method static Builder|Contact                                   whereMobilePhone($value)
- * @method static Builder|Contact                                   whereOrderColumn($value)
- * @method static Builder|Contact                                   whereSmsCount($value)
- * @method static Builder|Contact                                   whereSmsSentAt($value)
- * @method static Builder|Contact                                   whereSmsStatusCode($value)
- * @method static Builder|Contact                                   whereSmsStatusTxt($value)
- * @method static Builder|Contact                                   whereSurveyPdfId($value)
- * @method static Builder|Contact                                   whereToken($value)
- * @method static Builder|Contact                                   whereUpdatedAt($value)
- * @method static Builder|Contact                                   whereUpdatedBy($value)
- * @method static Builder|Contact                                   whereUserId($value)
- * @method static Builder|Contact                                   whereValue($value)
- * @method static Builder|Contact                                   whereVerifiedAt($value)
+ * @method static Builder|Contact newModelQuery()
+ * @method static Builder|Contact newQuery()
+ * @method static Builder|Contact query()
+ * @method static Builder|Contact whereContactType($value)
+ * @method static Builder|Contact whereCreatedAt($value)
+ * @method static Builder|Contact whereCreatedBy($value)
+ * @method static Builder|Contact whereId($value)
+ * @method static Builder|Contact whereModelId($value)
+ * @method static Builder|Contact whereModelType($value)
+ * @method static Builder|Contact whereLastName($value)
+ * @method static Builder|Contact whereMailCount($value)
+ * @method static Builder|Contact whereMailSentAt($value)
+ * @method static Builder|Contact whereMobilePhone($value)
+ * @method static Builder|Contact whereOrderColumn($value)
+ * @method static Builder|Contact whereSmsCount($value)
+ * @method static Builder|Contact whereSmsSentAt($value)
+ * @method static Builder|Contact whereSmsStatusCode($value)
+ * @method static Builder|Contact whereSmsStatusTxt($value)
+ * @method static Builder|Contact whereSurveyPdfId($value)
+ * @method static Builder|Contact whereToken($value)
+ * @method static Builder|Contact whereUpdatedAt($value)
+ * @method static Builder|Contact whereUpdatedBy($value)
+ * @method static Builder|Contact whereUserId($value)
+ * @method static Builder|Contact whereValue($value)
+ * @method static Builder|Contact whereVerifiedAt($value)
+ *
  * @mixin Eloquent
+ *
  * @property string|null $email
  * @property string|null $mobile_phone
+ *
  * @method static Builder|Contact whereAttribute1($value)
  * @method static Builder|Contact whereAttribute10($value)
  * @method static Builder|Contact whereAttribute11($value)
@@ -96,6 +100,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Contact whereEmail($value)
  * @method static Builder|Contact whereFirstName($value)
  * @method static Builder|Contact whereUsesleft($value)
+ *
  * @mixin \Eloquent
  */
 class Contact extends BaseModel
