@@ -34,6 +34,4 @@ use Illuminate\Support\Carbon;
  * @mixin Eloquent
  * @mixin \Eloquent
  */
-class NotifyThemeable extends BaseMorphPivot
-{
-}
+class NotifyThemeable extends BaseMorphPivot {}
