@@ -39,6 +39,7 @@
         "filament/filament": "*",
         "illuminate/contracts": "*",
         "illuminate/support": "*",
+        "irazasyed/telegram-bot-sdk": "*",
         "kreait/laravel-firebase": "^5.3",
         "laravel-notification-channels/telegram": "^5.0",
         "phpdocumentor/type-resolver": "*",
