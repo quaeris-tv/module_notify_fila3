@@ -49,12 +49,13 @@ class SendTelegram extends Page implements HasForms
 
     public function emailForm(Form $form): Form
     {
+        /*
         dddx($response = Telegram::getMe());
         $response = $telegram->sendMessage([
             'chat_id' => 'CHAT_ID',
             'text' => 'Hello World',
         ]);
-
+        */
         return $form
             ->schema(
                 [
