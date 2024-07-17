@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Modules\Notify\Console\Commands;
 
 use Illuminate\Console\Command;
-use Telegram\Bot\Laravel\Facades\Telegram;
+
+// use Telegram\Bot\Laravel\Facades\Telegram;
 
 class TelegramWebhook extends Command
 {
