@@ -74,7 +74,7 @@
         "tightenco/duster": "^2.2",
         "vimeo/psalm": "*"
     },
-    "repositories": [ 
+    "repositories": [
         {
             "type": "path",
             "url": "../Xot"
@@ -86,10 +86,6 @@
         {
             "type": "path",
             "url": "../UI"
-        },
-        {
-            "type": "path",
-            "url": "../Media"
         }
     ],
     "scripts": {
