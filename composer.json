@@ -40,7 +40,7 @@
         "illuminate/contracts": "*",
         "illuminate/support": "*",
         "irazasyed/telegram-bot-sdk": "*",
-        "kreait/laravel-firebase": "^5.3",
+        "kreait/laravel-firebase": "*",
         "laravel-notification-channels/telegram": "^5.0",
         "phpdocumentor/type-resolver": "*",
         "thecodingmachine/safe": "^2.5"
@@ -74,7 +74,7 @@
         "tightenco/duster": "^2.2",
         "vimeo/psalm": "*"
     },
-    "repositories": [ 
+    "repositories": [
         {
             "type": "path",
             "url": "../Xot"
@@ -86,10 +86,6 @@
         {
             "type": "path",
             "url": "../UI"
-        },
-        {
-            "type": "path",
-            "url": "../Media"
         }
     ],
     "scripts": {
