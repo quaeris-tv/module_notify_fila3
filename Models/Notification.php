@@ -99,10 +99,6 @@ use Illuminate\Support\Carbon;
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
- * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
- * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
- * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
- * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @mixin \Eloquent
  */
 class Notification extends DatabaseNotification
