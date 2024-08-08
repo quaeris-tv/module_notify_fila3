@@ -21,3 +21,8 @@ php artisan module:enable Notify
 ```bash
 php artisan module:migrate Notify
 ```
+
+
+## Test di prova per invio email
+
+## [Test smtp page](docs/test-smtp-page.md)
