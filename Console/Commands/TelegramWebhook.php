@@ -11,6 +11,7 @@ use Illuminate\Console\Command;
 class TelegramWebhook extends Command
 {
     protected $signature = 'telegram:set-webhook';
+
     protected $description = 'Set Telegram webhook URL';
 
     public function handle(): void
