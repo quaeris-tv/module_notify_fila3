@@ -33,9 +33,11 @@ use Illuminate\Support\Carbon;
  *
  * @mixin Eloquent
  *
- * @property-read \Modules\Fixcity\Models\Profile|null $creator
- * @property-read \Modules\Fixcity\Models\Profile|null $updater
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */
-class NotifyThemeable extends BaseMorphPivot {}
+class NotifyThemeable extends BaseMorphPivot
+{
+}

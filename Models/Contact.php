@@ -101,8 +101,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Contact whereFirstName($value)
  * @method static Builder|Contact whereUsesleft($value)
  *
- * @property-read \Modules\Fixcity\Models\Profile|null $creator
- * @property-read \Modules\Fixcity\Models\Profile|null $updater
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property-read \Modules\Xot\Contracts\ProfileContract|null $updater
  *
  * @mixin \Eloquent
  */
