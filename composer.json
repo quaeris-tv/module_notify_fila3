@@ -23,7 +23,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Notify\\Providers\\NotifyServiceProvider"
+                "Modules\\Notify\\Providers\\NotifyServiceProvider",
+                "Modules\\Notify\\Providers\\Filament\\AdminPanelProvider"
             ],
             "aliases": {
 
