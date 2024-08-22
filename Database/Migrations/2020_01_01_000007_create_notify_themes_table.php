@@ -9,8 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateThemesTable.
  */
-class CreateNotifyThemesTable extends XotBaseMigration
-{
+return new class () extends XotBaseMigration {
     // use XotBaseMigrationTrait;
     /**
      * Run the migrations.
@@ -80,4 +79,4 @@ class CreateNotifyThemesTable extends XotBaseMigration
     }
 
     // end function up
-}
+};
