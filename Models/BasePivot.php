@@ -36,7 +36,7 @@ abstract class BasePivot extends Pivot
 
     // this will use the specified database connection
 
-    /** @var array<int, string> */
+     /** @var list<string> */
     protected $appends = [];
 
     /** @return array<string, string> */
