@@ -16,11 +16,6 @@ class ListNotifications extends ListRecords
 
     protected static string $resource = NotificationResource::class;
 
-<<<<<<< HEAD
-=======
-    public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
-
->>>>>>> 5547ac5 (up)
     protected function getTableHeaderActions(): array
     {
         return [

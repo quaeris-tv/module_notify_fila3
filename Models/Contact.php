@@ -100,15 +100,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Contact whereEmail($value)
  * @method static Builder|Contact whereFirstName($value)
  * @method static Builder|Contact whereUsesleft($value)
-<<<<<<< HEAD
- * @property \Modules\Xot\Contracts\ProfileContract|null $creator
- * @property \Modules\Xot\Contracts\ProfileContract|null $updater
-=======
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
->>>>>>> 5547ac5 (up)
  * @mixin \Eloquent
  */
 class Contact extends BaseModel
@@ -124,8 +119,8 @@ class Contact extends BaseModel
     protected function casts(): array
     {
         return [
-                'id'=>'string',
-                'uuid'=>'string',
+            'id' => 'string',
+            'uuid' => 'string',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
