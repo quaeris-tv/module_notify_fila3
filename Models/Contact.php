@@ -47,6 +47,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $usesleft
  * @property string|null $sms_status_code
  * @property string|null $sms_status_txt
+<<<<<<< HEAD
  * @property int|null $duplicate_count
  * @property int|null $order_column
  *
@@ -77,11 +78,39 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Contact whereValue($value)
  * @method static Builder|Contact whereVerifiedAt($value)
  *
+=======
+ * @property int|null    $duplicate_count
+ * @property int|null    $order_column
+ * @method static \Modules\Notify\Database\Factories\ContactFactory factory($count = null, $state = [])
+ * @method static Builder|Contact                                   newModelQuery()
+ * @method static Builder|Contact                                   newQuery()
+ * @method static Builder|Contact                                   query()
+ * @method static Builder|Contact                                   whereContactType($value)
+ * @method static Builder|Contact                                   whereCreatedAt($value)
+ * @method static Builder|Contact                                   whereCreatedBy($value)
+ * @method static Builder|Contact                                   whereId($value)
+ * @method static Builder|Contact                                   whereModelId($value)
+ * @method static Builder|Contact                                   whereModelType($value)
+ * @method static Builder|Contact                                   whereLastName($value)
+ * @method static Builder|Contact                                   whereMailCount($value)
+ * @method static Builder|Contact                                   whereMailSentAt($value)
+ * @method static Builder|Contact                                   whereMobilePhone($value)
+ * @method static Builder|Contact                                   whereOrderColumn($value)
+ * @method static Builder|Contact                                   whereSmsCount($value)
+ * @method static Builder|Contact                                   whereSmsSentAt($value)
+ * @method static Builder|Contact                                   whereSmsStatusCode($value)
+ * @method static Builder|Contact                                   whereSmsStatusTxt($value)
+ * @method static Builder|Contact                                   whereSurveyPdfId($value)
+ * @method static Builder|Contact                                   whereToken($value)
+ * @method static Builder|Contact                                   whereUpdatedAt($value)
+ * @method static Builder|Contact                                   whereUpdatedBy($value)
+ * @method static Builder|Contact                                   whereUserId($value)
+ * @method static Builder|Contact                                   whereValue($value)
+ * @method static Builder|Contact                                   whereVerifiedAt($value)
+>>>>>>> origin/dev
  * @mixin Eloquent
- *
  * @property string|null $email
  * @property string|null $mobile_phone
- *
  * @method static Builder|Contact whereAttribute1($value)
  * @method static Builder|Contact whereAttribute10($value)
  * @method static Builder|Contact whereAttribute11($value)
@@ -100,12 +129,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Contact whereEmail($value)
  * @method static Builder|Contact whereFirstName($value)
  * @method static Builder|Contact whereUsesleft($value)
- *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  * @mixin \Eloquent
  */
 class Contact extends BaseModel
 {
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'model_id', 'model_type', 'contact_type', 'value',
         'verified_at', 'updated_at', 'created_at',

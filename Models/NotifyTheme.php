@@ -37,6 +37,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property array $logo
  * @property Model|\Eloquent $linkable
  * @property MediaCollection<int, \Modules\Media\Models\Media> $media
+<<<<<<< HEAD
  * @property int|null $media_count
  *
  * @method static \Modules\Notify\Database\Factories\NotifyThemeFactory factory($count = null, $state = [])
@@ -63,14 +64,42 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @method static Builder|NotifyTheme whereUpdatedBy($value)
  * @method static Builder|NotifyTheme whereViewParams($value)
  *
+=======
+ * @property int|null                                          $media_count
+ * @method static \Modules\Notify\Database\Factories\NotifyThemeFactory factory($count = null, $state = [])
+ * @method static Builder|NotifyTheme                                   newModelQuery()
+ * @method static Builder|NotifyTheme                                   newQuery()
+ * @method static Builder|NotifyTheme                                   query()
+ * @method static Builder|NotifyTheme                                   whereBody($value)
+ * @method static Builder|NotifyTheme                                   whereBodyHtml($value)
+ * @method static Builder|NotifyTheme                                   whereCreatedAt($value)
+ * @method static Builder|NotifyTheme                                   whereCreatedBy($value)
+ * @method static Builder|NotifyTheme                                   whereFrom($value)
+ * @method static Builder|NotifyTheme                                   whereFromEmail($value)
+ * @method static Builder|NotifyTheme                                   whereId($value)
+ * @method static Builder|NotifyTheme                                   whereLang($value)
+ * @method static Builder|NotifyTheme                                   whereLogoHeight($value)
+ * @method static Builder|NotifyTheme                                   whereLogoSrc($value)
+ * @method static Builder|NotifyTheme                                   whereLogoWidth($value)
+ * @method static Builder|NotifyTheme                                   wherePostId($value)
+ * @method static Builder|NotifyTheme                                   wherePostType($value)
+ * @method static Builder|NotifyTheme                                   whereSubject($value)
+ * @method static Builder|NotifyTheme                                   whereTheme($value)
+ * @method static Builder|NotifyTheme                                   whereType($value)
+ * @method static Builder|NotifyTheme                                   whereUpdatedAt($value)
+ * @method static Builder|NotifyTheme                                   whereUpdatedBy($value)
+ * @method static Builder|NotifyTheme                                   whereViewParams($value)
+>>>>>>> origin/dev
  * @mixin Eloquent
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  * @mixin \Eloquent
  */
 class NotifyTheme extends BaseModel implements HasMedia
 {
     use InteractsWithMedia;
 
-    /** @var array<int, string> */
+    /** @var list<string> */
     protected $fillable = [
         'id',
         'lang',
@@ -89,7 +118,7 @@ class NotifyTheme extends BaseModel implements HasMedia
         'view_params',
     ];
 
-    /** @var array<int, string> */
+     /** @var list<string> */
     protected $appends = [
         'logo',
     ];

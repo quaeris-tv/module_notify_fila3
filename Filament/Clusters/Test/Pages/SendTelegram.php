@@ -24,6 +24,7 @@ use Modules\Notify\Filament\Clusters\Test;
 use Modules\Notify\Notifications\TelegramNotification;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use NotificationChannels\Telegram\TelegramMessage;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /**
  * @property ComponentContainer $emailForm
@@ -48,6 +49,13 @@ class SendTelegram extends Page implements HasForms
 
     public function emailForm(Form $form): Form
     {
+        /*
+        dddx($response = Telegram::getMe());
+        $response = $telegram->sendMessage([
+            'chat_id' => 'CHAT_ID',
+            'text' => 'Hello World',
+        ]);
+        */
         return $form
             ->schema(
                 [

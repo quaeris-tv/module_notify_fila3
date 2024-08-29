@@ -52,3 +52,11 @@ package-lock.json
 
 
 
+node_modules
+vendor
+.php-cs-fixer.cache
+.git-blame-ignore-revs
+build/
+vendor/
+build/
+node_modules

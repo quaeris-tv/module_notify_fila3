@@ -10,15 +10,19 @@ use Illuminate\Support\Carbon;
 /**
  * Modules\Notify\Models\NotifyThemeable.
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $model_type
- * @property int|null $model_id
+ * @property int|null    $model_id
  * @property Carbon|null $created_at
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
+<<<<<<< HEAD
  * @property int|null $notify_theme_id
  *
+=======
+ * @property int|null    $notify_theme_id
+>>>>>>> origin/dev
  * @method static Builder|NotifyThemeable newModelQuery()
  * @method static Builder|NotifyThemeable newQuery()
  * @method static Builder|NotifyThemeable query()
@@ -32,6 +36,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|NotifyThemeable whereUpdatedBy($value)
  *
  * @mixin Eloquent
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  * @mixin \Eloquent
  */
 class NotifyThemeable extends BaseMorphPivot

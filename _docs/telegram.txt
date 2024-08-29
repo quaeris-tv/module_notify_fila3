@@ -11,3 +11,6 @@ Add telegram service into config/service.php file.
     'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR BOT TOKEN HERE')
 ],
 
+
+--- TUTORIAL ---
+https://abstractentropy.com/laravel-notifications-telegram-bot/
