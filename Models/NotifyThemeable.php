@@ -31,6 +31,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|NotifyThemeable whereUpdatedAt($value)
  * @method static Builder|NotifyThemeable whereUpdatedBy($value)
  *
+<<<<<<< HEAD
+=======
+ * @mixin Eloquent
+ *
+>>>>>>> 5547ac5 (up)
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
  *
