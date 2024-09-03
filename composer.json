@@ -33,7 +33,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Notify\\": ""
+            "Modules\\Notify\\": "",
+            "Modules\\Notify\\Database\\Factories\\": "database/factories/",
+            "Modules\\Notify\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "require": {
