@@ -41,7 +41,28 @@ abstract class BaseModel extends Model
     /** @var string */
     protected $connection = 'notify';
 
+<<<<<<< HEAD
     /** @var list<string> */
+=======
+    /** @return array<string, string> */
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+
+            'verified_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+
+            'updated_by' => 'string',
+            'created_by' => 'string',
+            'deleted_by' => 'string',
+        ];
+    }
+
+     /** @var list<string> */
+>>>>>>> eb8fcda (up)
     protected $appends = [];
 
     /** @var string */

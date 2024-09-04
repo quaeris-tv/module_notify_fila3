@@ -35,7 +35,11 @@ abstract class BaseMorphPivot extends MorphPivot
     /** @var string */
     protected $connection = 'notify';
 
+<<<<<<< HEAD
     /** @var list<string> */
+=======
+     /** @var list<string> */
+>>>>>>> eb8fcda (up)
     protected $appends = [];
 
     /** @var string */
