@@ -12,9 +12,9 @@ use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
 class ListNotifications extends ListRecords
 {
-    protected static string $resource = NotificationResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+
+    protected static string $resource = NotificationResource::class;
 
     protected function getTableHeaderActions(): array
     {

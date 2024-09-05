@@ -12,9 +12,9 @@ use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
 class ListContacts extends ListRecords
 {
-    protected static string $resource = ContactResource::class;
-
     public TableLayoutEnum $layoutView = TableLayoutEnum::GRID;
+
+    protected static string $resource = ContactResource::class;
 
     protected function getTableHeaderActions(): array
     {

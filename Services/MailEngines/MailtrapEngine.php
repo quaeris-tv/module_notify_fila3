@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Mail;
  */
 class MailtrapEngine
 {
-    private static ?self $instance = null;
-
     public ?string $from = null;
 
     public string $to;
@@ -29,9 +27,11 @@ class MailtrapEngine
 
     public ?string $body = null;
 
+    private static ?self $instance = null;
+
     public static function getInstance(): self
     {
-        if (! self::$instance instanceof MailtrapEngine) {
+        if (! self::$instance instanceof self) {
             self::$instance = new self;
         }
 

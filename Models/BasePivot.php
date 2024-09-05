@@ -36,8 +36,14 @@ abstract class BasePivot extends Pivot
 
     // this will use the specified database connection
 
-     /** @var list<string> */
+    /** @var list<string> */
     protected $appends = [];
+
+    /**
+     * Undocumented variable.
+     */
+    /** @var string */
+    protected $primaryKey = 'id';
 
     /** @return array<string, string> */
     protected function casts(): array
@@ -53,10 +59,4 @@ abstract class BasePivot extends Pivot
             'deleted_by' => 'string',
         ];
     }
-
-    /**
-     * Undocumented variable.
-     */
-    /** @var string */
-    protected $primaryKey = 'id';
 }

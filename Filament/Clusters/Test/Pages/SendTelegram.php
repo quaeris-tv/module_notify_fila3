@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
+use Exception;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -81,7 +82,7 @@ class SendTelegram extends Page implements HasForms
 
         $token = config('services.telegram-bot-api.token');
         $url = 'https://api.telegram.org/bot'.$token.'/getMe';
-        $response = Http::get($url);
+        Http::get($url);
 
         // dddx($response->json());
         /*
@@ -132,7 +133,7 @@ class SendTelegram extends Page implements HasForms
         $user = Filament::auth()->user();
 
         if (! $user instanceof Model) {
-            throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
+            throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
         return $user;

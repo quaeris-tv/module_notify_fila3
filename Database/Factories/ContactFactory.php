@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Models\Contact;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Notify\Models\Contact>
+ */
 class ContactFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Model>
+     * @var class-string<Contact>
      */
     protected $model = Contact::class;
 
@@ -24,16 +27,16 @@ class ContactFactory extends Factory
     {
         return [
             // 'model_id' => $this->faker->randomNumber(5, false),
-            'model_type' => $this->faker->word,
-            'contact_type' => $this->faker->word,
-            'value' => $this->faker->word,
-            'verified_at' => $this->faker->dateTime,
-            'updated_at' => $this->faker->dateTime,
-            'created_at' => $this->faker->dateTime,
-            'updated_by' => $this->faker->word,
-            'created_by' => $this->faker->word,
+            'model_type' => fake()->word,
+            'contact_type' => fake()->word,
+            'value' => fake()->word,
+            'verified_at' => fake()->dateTime,
+            'updated_at' => fake()->dateTime,
+            'created_at' => fake()->dateTime,
+            'updated_by' => fake()->word,
+            'created_by' => fake()->word,
             // 'user_id' => $this->faker->randomNumber(5, false),
-            'token' => $this->faker->word,
+            'token' => fake()->word,
         ];
     }
 }

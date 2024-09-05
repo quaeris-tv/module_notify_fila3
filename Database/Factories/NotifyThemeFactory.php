@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Notify\Models\NotifyTheme;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Notify\Models\NotifyTheme>
+ */
 class NotifyThemeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Model>
+     * @var class-string<NotifyTheme>
      */
     protected $model = NotifyTheme::class;
 
@@ -23,13 +26,13 @@ class NotifyThemeFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => $this->faker->randomNumber(5, false),
-            'lang' => $this->faker->word,
-            'type' => $this->faker->word,
-            'subject' => $this->faker->word,
-            'body' => $this->faker->text,
-            'body_html' => $this->faker->text,
-            'from' => $this->faker->word,
+            'id' => fake()->randomNumber(5, false),
+            'lang' => fake()->word,
+            'type' => fake()->word,
+            'subject' => fake()->word,
+            'body' => fake()->text,
+            'body_html' => fake()->text,
+            'from' => fake()->word,
         ];
     }
 }

@@ -10,6 +10,7 @@ namespace Modules\Notify\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use InvalidArgumentException;
 use NotificationChannels\Telegram\TelegramMessage;
 
 class TelegramNotification extends Notification
@@ -29,9 +30,9 @@ class TelegramNotification extends Notification
      *
      * @param  mixed  $notifiable  the entity to be notified
      *
-     * @throws \InvalidArgumentException if no delivery channels are available for the notifiable entity
+     * @throws InvalidArgumentException if no delivery channels are available for the notifiable entity
      */
-    public function via($notifiable): array
+    public function via(mixed $notifiable): array
     {
         return ['telegram'];
     }

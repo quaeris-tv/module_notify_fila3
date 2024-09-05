@@ -10,6 +10,7 @@ namespace Modules\Notify\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Stringable;
+use InvalidArgumentException;
 use Kreait\Firebase\Messaging\AndroidConfig;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Message;
@@ -22,14 +23,11 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
 {
     use Queueable;
 
-    public FirebaseNotificationData $data;
-
     /**
      * Create a new notification instance.
      */
-    public function __construct(FirebaseNotificationData $data)
+    public function __construct(public FirebaseNotificationData $data)
     {
-        $this->data = $data;
     }
 
     /**
@@ -37,25 +35,22 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
      *
      * @param  mixed  $notifiable  the entity to be notified
      *
-     * @throws \InvalidArgumentException if no delivery channels are available for the notifiable entity
+     * @throws InvalidArgumentException if no delivery channels are available for the notifiable entity
      */
-    public function via($notifiable): array
+    public function via(mixed $notifiable): array
     {
-        $channels = [
+        return [
             // 'firebase',
             FirebaseCloudMessagingChannel::class,
         ];
-
-        return $channels;
     }
 
     /**
      * A description of the entire PHP function.
      *
      * @param  mixed  $notifiable  the entity to be notified
-     * @return CloudMessage
      */
-    public function toFirebase($notifiable)
+    public function toFirebase(mixed $notifiable): \Kreait\Firebase\Messaging\CloudMessage
     {
         return CloudMessage::new()
             ->withNotification(FirebaseNotification::create($this->data->title, $this->data->body))

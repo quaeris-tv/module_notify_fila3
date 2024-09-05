@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
+use Exception;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -142,7 +143,7 @@ class TestSmtpPage extends Page implements HasForms
             $transport = $smtp->getTransport();
             $transport->start();
             $this->error_message = null;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->error_message = $e->getMessage();
 
             return;
@@ -167,7 +168,7 @@ class TestSmtpPage extends Page implements HasForms
             ->html($email_data->body);
         try {
             $mailer->send($email);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->error_message = $e->getMessage();
 
             return;
@@ -202,7 +203,7 @@ class TestSmtpPage extends Page implements HasForms
         $user = Filament::auth()->user();
 
         if (! $user instanceof Model) {
-            throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
+            throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
         return $user;

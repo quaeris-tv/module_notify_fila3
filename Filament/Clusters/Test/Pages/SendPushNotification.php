@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
+use Exception;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -59,16 +60,12 @@ class SendPushNotification extends Page implements HasForms
         /**
          * ---.
          */
-        $callback = function ($item) {
-            return [$item->push_notifications_token => $item->profile->full_name.' ('.$item->device?->robot.') '.substr($item->push_notifications_token, -5)];
-        };
+        $callback = fn($item) => [$item->push_notifications_token => $item->profile->full_name.' ('.$item->device?->robot.') '.mb_substr($item->push_notifications_token, -5)];
 
         /**
          * ---.
          */
-        $filterCallback = function ($item) {
-            return $item->profile != null;
-        };
+        $filterCallback = fn($item): bool => $item->profile !== null;
 
         $to = $devices
             ->filter($filterCallback)
@@ -153,7 +150,7 @@ class SendPushNotification extends Page implements HasForms
         $user = Filament::auth()->user();
 
         if (! $user instanceof Model) {
-            throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
+            throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
         return $user;

@@ -16,11 +16,8 @@ class EmailDataEmail extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public EmailData $email_data;
-
-    public function __construct(EmailData $email_data)
+    public function __construct(public EmailData $email_data)
     {
-        $this->email_data = $email_data;
     }
 
     /**
