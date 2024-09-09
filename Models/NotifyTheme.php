@@ -117,6 +117,8 @@ class NotifyTheme extends BaseModel implements HasMedia
     protected function casts(): array
     {
         return [
+                'id'=>'string',
+                'uuid'=>'string',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
