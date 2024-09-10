@@ -39,7 +39,7 @@ abstract class BaseModel extends Model
     protected $perPage = 30;
 
     /** @var string */
-    protected $connection = 'notify';
+    protected $connection = 'mysql';
 
     /** @var list<string> */
     protected $appends = [];
