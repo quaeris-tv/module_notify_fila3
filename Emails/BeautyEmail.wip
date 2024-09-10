@@ -38,7 +38,7 @@ class BeautyEmail implements Mailer {
         $this->settings = $settings;
         $mailer = app()->make('Illuminate\Contracts\Mail\Mailer');
         if (! $mailer instanceof Mailer) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
         }
         $this->mailer = $mailer;
         $this->setLogoPath();

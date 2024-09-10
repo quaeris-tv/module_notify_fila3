@@ -71,7 +71,7 @@ class MailtrapEngine
         });
         // Dead catch - ErrorException is never thrown in the try block.
         // } catch (ErrorException $e) {
-        //    throw new Exception('['.__LINE__.']['.__FILE__.']');
+        //    throw new Exception('['.__LINE__.']['.class_basename($this).']');
         // }
     }
 }

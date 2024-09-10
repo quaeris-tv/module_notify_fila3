@@ -33,7 +33,7 @@ class EsendexSendAction
         $auth = $this->login();
 
         if (! is_array($auth)) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
         $data = [
@@ -70,7 +70,7 @@ class EsendexSendAction
 
         dddx($res);
         if (! is_array($res)) {
-            throw new Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
         return $res;
