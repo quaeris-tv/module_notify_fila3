@@ -10,14 +10,15 @@ use Illuminate\Support\Carbon;
 /**
  * Modules\Notify\Models\NotifyThemeable.
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $model_type
- * @property int|null $model_id
+ * @property int|null    $model_id
  * @property Carbon|null $created_at
  * @property string|null $created_by
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
- * @property int|null $notify_theme_id
+ * @property int|null    $notify_theme_id
+ *
  * @method static Builder|NotifyThemeable newModelQuery()
  * @method static Builder|NotifyThemeable newQuery()
  * @method static Builder|NotifyThemeable query()
@@ -29,8 +30,19 @@ use Illuminate\Support\Carbon;
  * @method static Builder|NotifyThemeable whereNotifyThemeId($value)
  * @method static Builder|NotifyThemeable whereUpdatedAt($value)
  * @method static Builder|NotifyThemeable whereUpdatedBy($value)
+<<<<<<< HEAD
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+=======
+ *
+ * @mixin Eloquent
+ *
+ * @property \Modules\Xot\Contracts\ProfileContract|null $creator
+ * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ *
+>>>>>>> 5547ac5 (up)
  * @mixin \Eloquent
  */
-class NotifyThemeable extends BaseMorphPivot {}
+class NotifyThemeable extends BaseMorphPivot
+{
+}

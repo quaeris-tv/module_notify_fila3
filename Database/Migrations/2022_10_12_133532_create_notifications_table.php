@@ -6,8 +6,12 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
+<<<<<<< HEAD
 return new class() extends XotBaseMigration
 {
+=======
+return new class () extends XotBaseMigration {
+>>>>>>> 5547ac5 (up)
     /**
      * Run the migrations.
      */

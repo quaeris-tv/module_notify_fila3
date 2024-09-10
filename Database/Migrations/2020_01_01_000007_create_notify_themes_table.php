@@ -9,8 +9,12 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /**
  * Class CreateThemesTable.
  */
+<<<<<<< HEAD
 return new class() extends XotBaseMigration
 {
+=======
+return new class () extends XotBaseMigration {
+>>>>>>> 5547ac5 (up)
     // use XotBaseMigrationTrait;
     /**
      * Run the migrations.

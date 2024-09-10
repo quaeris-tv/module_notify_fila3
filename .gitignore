@@ -60,5 +60,8 @@ build/
 vendor/
 build/
 node_modules
+<<<<<<< HEAD
 docs/cache/
 cache/
+=======
+>>>>>>> 5547ac5 (up)
