@@ -36,11 +36,7 @@ abstract class BasePivot extends Pivot
 
     // this will use the specified database connection
 
-<<<<<<< HEAD
     /** @var list<string> */
-=======
-     /** @var list<string> */
->>>>>>> eb8fcda (up)
     protected $appends = [];
 
     /**
@@ -48,15 +44,15 @@ abstract class BasePivot extends Pivot
      */
     /** @var string */
     protected $primaryKey = 'id';
-/** @var string */
+    /** @var string */
     protected $keyType = 'string';
 
     /** @return array<string, string> */
     protected function casts(): array
     {
         return [
-            'id'=>'string',// must be string else primary key of related model will be typed as int
-            'uuid'=>'string',
+            'id' => 'string', // must be string else primary key of related model will be typed as int
+            'uuid' => 'string',
 
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
