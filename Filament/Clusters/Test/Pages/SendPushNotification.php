@@ -60,12 +60,12 @@ class SendPushNotification extends Page implements HasForms
         /**
          * ---.
          */
-        $callback = fn($item) => [$item->push_notifications_token => $item->profile->full_name.' ('.$item->device?->robot.') '.mb_substr($item->push_notifications_token, -5)];
+        $callback = fn ($item) => [$item->push_notifications_token => $item->profile->full_name.' ('.$item->device?->robot.') '.mb_substr($item->push_notifications_token, -5)];
 
         /**
          * ---.
          */
-        $filterCallback = fn($item): bool => $item->profile !== null;
+        $filterCallback = fn ($item): bool => $item->profile !== null;
 
         $to = $devices
             ->filter($filterCallback)

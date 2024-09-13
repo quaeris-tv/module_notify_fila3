@@ -16,9 +16,7 @@ class EmailDataEmail extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public function __construct(public EmailData $email_data)
-    {
-    }
+    public function __construct(public EmailData $email_data) {}
 
     /**
      * Get the message envelope.
