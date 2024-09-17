@@ -25,7 +25,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null     $updated_at
  * @property string|null     $updated_by
  * @property Model|\Eloquent $notifiable
- *
  * @method static DatabaseNotificationCollection<int, static>        all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static>        get($columns = ['*'])
  * @method static \Illuminate\Database\Eloquent\Builder|Notification newModelQuery()
@@ -190,9 +189,7 @@ use Illuminate\Support\Carbon;
  * @method static DatabaseNotificationCollection<int, static>        get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static>        all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static>        get($columns = ['*'])
- *
  * @mixin \Eloquent
- *
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
@@ -217,7 +214,8 @@ use Illuminate\Support\Carbon;
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
- *
+ * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
+ * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @mixin Eloquent
  */
 class Notification extends DatabaseNotification
