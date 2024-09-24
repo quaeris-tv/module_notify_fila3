@@ -85,8 +85,15 @@ class EsendexSendAction
         $curlHandle = curl_init();
         curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);
 
+<<<<<<< HEAD
         Assert::string($username = config('esendex.username'));
         Assert::string($password = config('esendex.password'));
+=======
+        /** @var string */
+        $username=config('esendex.username');
+        /** @var string */
+        $password=config('esendex.password');
+>>>>>>> 5131d62 (up)
 
         $login_string = $this->base_endpoint.'login?username='.$username.'&password='.$password;
 
