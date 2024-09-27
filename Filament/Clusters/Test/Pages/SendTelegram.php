@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
-use Exception;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -26,6 +25,7 @@ use Modules\Notify\Notifications\TelegramNotification;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 use NotificationChannels\Telegram\TelegramMessage;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Webmozart\Assert\Assert;
 
 /**
  * @property ComponentContainer $emailForm
@@ -80,7 +80,7 @@ class SendTelegram extends Page implements HasForms
     {
         $data = $this->emailForm->getState();
 
-        $token = config('services.telegram-bot-api.token');
+        Assert::string($token = config('services.telegram-bot-api.token'));
         $url = 'https://api.telegram.org/bot'.$token.'/getMe';
         Http::get($url);
 
@@ -108,7 +108,7 @@ class SendTelegram extends Page implements HasForms
         */
         // Notification::sendNow($developers, new TelegramNotification());
         Notification::route('telegram', $data['to'])
-            ->notify(new TelegramNotification);
+            ->notify(new TelegramNotification());
     }
 
     protected function getForms(): array
@@ -133,7 +133,7 @@ class SendTelegram extends Page implements HasForms
         $user = Filament::auth()->user();
 
         if (! $user instanceof Model) {
-            throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
+            throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
         return $user;
