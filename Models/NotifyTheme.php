@@ -67,10 +67,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @mixin \Eloquent
  * @mixin Eloquent
  */
-class NotifyTheme extends BaseModel implements HasMedia
+class NotifyTheme extends BaseModel
 {
-    use InteractsWithMedia;
-
     /** @var list<string> */
     protected $fillable = [
         'id',

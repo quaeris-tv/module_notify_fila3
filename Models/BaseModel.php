@@ -4,21 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Models;
 
-// ---------- traits
+use Modules\Xot\Traits\Updater;
+use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// //use Laravel\Scout\Searchable;
-use Illuminate\Database\Eloquent\Model;
-use Modules\Xot\Traits\Updater;
 
 /**
  * Class BaseModel.
  */
-abstract class BaseModel extends Model
+abstract class BaseModel extends Model implements HasMedia
 {
     // use Searchable;
     use HasFactory;
     use Updater;
+    use InteractsWithMedia;
 
     /**
      * Indicates whether attributes are snake cased on arrays.
@@ -39,7 +40,7 @@ abstract class BaseModel extends Model
     protected $perPage = 30;
 
     /** @var string */
-    protected $connection = 'mysql';
+    protected $connection = 'notify';
 
     /** @var list<string> */
     protected $appends = [];
