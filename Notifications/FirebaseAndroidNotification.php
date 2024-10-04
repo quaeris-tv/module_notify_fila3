@@ -26,9 +26,7 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
     /**
      * Create a new notification instance.
      */
-    public function __construct(public FirebaseNotificationData $data)
-    {
-    }
+    public function __construct(public FirebaseNotificationData $data) {}
 
     /**
      * Get the notification's delivery channels.
@@ -50,7 +48,7 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
      *
      * @param  mixed  $notifiable  the entity to be notified
      */
-    public function toFirebase(mixed $notifiable): \Kreait\Firebase\Messaging\CloudMessage
+    public function toFirebase(mixed $notifiable): CloudMessage
     {
         return CloudMessage::new()
             ->withNotification(FirebaseNotification::create($this->data->title, $this->data->body))

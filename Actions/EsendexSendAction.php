@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Actions;
 
+use Exception;
 use Modules\Notify\Datas\SmsData;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 use function Safe\curl_exec;
 use function Safe\curl_getinfo;
@@ -12,9 +15,6 @@ use function Safe\curl_init;
 use function Safe\curl_setopt;
 use function Safe\json_decode;
 use function Safe\json_encode;
-
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
 
 /**
  * @property string $base_endpoint
@@ -33,7 +33,7 @@ class EsendexSendAction
         $auth = $this->login();
 
         if (! is_array($auth)) {
-            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
+            throw new Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
         $data = [
@@ -62,7 +62,7 @@ class EsendexSendAction
         $info = curl_getinfo($ch);
         curl_close($ch);
         Assert::isArray($info);
-        if (201 !== $info['http_code']) {
+        if ($info['http_code'] !== 201) {
             return [];
         }
 
@@ -70,7 +70,7 @@ class EsendexSendAction
 
         dddx($res);
         if (! is_array($res)) {
-            throw new \Exception('['.__LINE__.']['.class_basename($this).']');
+            throw new Exception('['.__LINE__.']['.class_basename($this).']');
         }
 
         return $res;
@@ -102,7 +102,7 @@ class EsendexSendAction
 
         curl_close($curlHandle);
         Assert::isArray($info);
-        if (200 !== $info['http_code']) {
+        if ($info['http_code'] !== 200) {
             return null;
         }
 
