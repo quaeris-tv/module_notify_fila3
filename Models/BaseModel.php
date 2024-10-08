@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Models;
 
-use Modules\Xot\Traits\Updater;
-use Spatie\MediaLibrary\HasMedia;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Modules\Xot\Traits\Updater;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Class BaseModel.
@@ -18,8 +18,8 @@ abstract class BaseModel extends Model implements HasMedia
 {
     // use Searchable;
     use HasFactory;
-    use Updater;
     use InteractsWithMedia;
+    use Updater;
 
     /**
      * Indicates whether attributes are snake cased on arrays.

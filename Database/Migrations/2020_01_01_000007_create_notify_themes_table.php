@@ -9,8 +9,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;
 /*
  * Class CreateThemesTable.
  */
-return new class extends XotBaseMigration
-{
+return new class() extends XotBaseMigration {
     // use XotBaseMigrationTrait;
     /**
      * Run the migrations.
@@ -73,7 +72,7 @@ return new class extends XotBaseMigration
                 }
 
                 if (! $this->hasColumn('view_params')) {
-                    $table->json('view_params');
+                    $table->json('view_params')->nullable();
                 }
             }
         ); // end update
