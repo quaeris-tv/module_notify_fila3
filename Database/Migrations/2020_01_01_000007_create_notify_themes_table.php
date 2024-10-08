@@ -73,7 +73,7 @@ return new class extends XotBaseMigration
                 }
 
                 if (! $this->hasColumn('view_params')) {
-                    $table->json('view_params');
+                    $table->json('view_params')->nullable();
                 }
             }
         ); // end update
