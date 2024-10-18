@@ -17,7 +17,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property int|null $notify_theme_id
- *
  * @method static \Illuminate\Database\Eloquent\Builder|NotifyThemeable newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|NotifyThemeable newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|NotifyThemeable query()
@@ -29,10 +28,8 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|NotifyThemeable whereNotifyThemeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|NotifyThemeable whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|NotifyThemeable whereUpdatedBy($value)
- *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
- *
  * @mixin \Eloquent
  */
 class NotifyThemeable extends BaseMorphPivot {}
