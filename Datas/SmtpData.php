@@ -54,4 +54,17 @@ class SmtpData extends Data
 
         return $transport;
     }
+
+    public function toArray():array {
+        return [
+            'transport' => $this->transport,
+            'host' => $this->host,
+            'port' => $this->port,
+            'encryption' => $this->encryption,
+            'username' => $this->username,
+            'password' => $this->password,
+            'timeout' => $this->timeout,
+            'local_domain' => $this->local_domain,
+        ];
+    }
 }
