@@ -7,6 +7,7 @@ namespace Modules\Notify\Datas;
 use Illuminate\Support\Arr;
 use Modules\Tenant\Services\TenantService;
 use Spatie\LaravelData\Data;
+use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
 class SmtpData extends Data
@@ -47,11 +48,34 @@ class SmtpData extends Data
     public function getTransport(): EsmtpTransport
     {
         $transport = new EsmtpTransport($this->host, $this->port, $this->tls);
-        if ($this->username !== null && $this->password !== null) {
+        if (null !== $this->username && null !== $this->password) {
             $transport->setUsername($this->username);
             $transport->setPassword($this->password);
         }
 
         return $transport;
+    }
+
+    public function getMailer(): Mailer
+    {
+        $transport = $this->getTransport();
+        try {
+            $transport->start();
+        } catch (\Exception $e) {
+            throw new \Exception('Errore durante la connessione SMTP: '.$e->getMessage());
+        }
+        $mailer = new Mailer($transport);
+
+        return $mailer;
+    }
+
+    public function send(EmailData $emailData): void
+    {
+        $mimeEmail = $emailData->getMimeEmail();
+        try {
+            $mailer->send($email);
+        } catch (\Exception $e) {
+            throw new \Exception("Errore durante l'invio dell'email: ".$e->getMessage());
+        }
     }
 }
