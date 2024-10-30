@@ -72,20 +72,20 @@ class TestSmtpPage extends Page implements HasForms
                     Section::make('MAIL')
                         ->schema(
                             [
-                                Forms\Components\TextInput::make('email_from_address')
+                                Forms\Components\TextInput::make('from_email')
                                     ->default(config('mail.from.address', $defaultEmail))
                                     ->email()
                                     ->required(),
-                                Forms\Components\TextInput::make('email_from_name')
+                                Forms\Components\TextInput::make('from')
                                     ->default(config('mail.from.name')),
-                                Forms\Components\TextInput::make('email_to')
+                                Forms\Components\TextInput::make('to')
                                     ->default($defaultEmail)
                                     ->email()
                                     ->required(),
                                 Forms\Components\TextInput::make('subject')
                                     ->default('test')
                                     ->required(),
-                                Forms\Components\RichEditor::make('body')
+                                Forms\Components\RichEditor::make('body_html')
                                     ->default('test body')
                                     ->required()
                                     ->columnSpanFull(),
@@ -100,40 +100,9 @@ class TestSmtpPage extends Page implements HasForms
     {
         $data = $this->emailForm->getState();
         $smtp = SmtpData::from($data);
-
-        try {
-            $transport = $smtp->getTransport();
-            $transport->start();
-            $this->error_message = null;
-        } catch (\Exception $e) {
-            $this->error_message = $e->getMessage();
-
-            return;
-        }
-
         $emailData = EmailData::from($data);
-
-        Assert::string($email_from_address = $data['email_from_address']);
-        Assert::string($email_from_name = $data['email_from_name']);
-        Assert::string($email_to = $data['email_to']);
-
-        $from = new Address($email_from_address, $email_from_name);
-
-        $mailer = new Mailer($transport);
-        $email = (new Email())
-            ->from($from)
-            ->to($email_to)
-            ->subject($emailData->subject)
-            ->text(strip_tags($emailData->body))
-            ->html($emailData->body);
-
-        try {
-            $mailer->send($email);
-        } catch (\Exception $e) {
-            $this->error_message = $e->getMessage();
-
-            return;
-        }
+        $smtp->send($emailData);
+        
 
         Notification::make()
             ->success()
