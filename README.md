@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📣 Enhance Your App with the Fila3 Notify Module! 🚀
 
 ![GitHub issues](https://img.shields.io/github/issues/laraxot/module_notify_fila3)
@@ -77,33 +76,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 👤 Author
 Marco Sottana
 Discover more of my work at marco76tv!
-=======
-# Module Notify
-Modulo dedicato alla gestione delle notifiche (email, sms, altro)
-
-## Aggiungere Modulo nella base del progetto
-Dentro la cartella laravel/Modules
-
-```bash
-git submodule add https://github.com/laraxot/module_notify_fila3.git Notify
-```
-
-## Verificare che il modulo sia attivo
-```bash
-php artisan module:list
-```
-in caso abilitarlo
-```bash
-php artisan module:enable Notify
-```
-
-## Eseguire le migrazioni
-```bash
-php artisan module:migrate Notify
-```
-
-
-## Test di prova per invio email
-
-## [Test smtp page](docs/test-smtp-page.md)
->>>>>>> 305295bd (up)
