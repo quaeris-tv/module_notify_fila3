@@ -41,24 +41,6 @@ class EmailData extends Data
     }
     */
 
-    /*
-    public function __construct(
-        string $to,
-        ?string $from = null,
-        ?string $from_email = null,
-        string $subject,
-        string $body_html,
-        ?string $body = null
-    ) {
-        $this->to = $to;
-        $this->from = $from ?? config('mail.from.name', 'No-Reply');
-        $this->from_email = $from_email ?? config('mail.from.address');
-        $this->subject = $subject;
-        $this->body_html = $body_html;
-        $this->body = $body ?? strip_tags($body_html);
-    }
-    */
-
     public function getFrom(): Address
     {
         Assert::string($fromEmail = $this->from_email ?? config('mail.from.address'));
