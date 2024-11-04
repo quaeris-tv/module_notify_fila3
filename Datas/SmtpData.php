@@ -13,6 +13,7 @@ use Symfony\Component\Mailer\Mailer;
 =======
 >>>>>>> dda24244 (.)
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
+use Webmozart\Assert\Assert;
 
 /**
  * Class Modules\Notify\Datas\SmtpData.
@@ -46,6 +47,10 @@ class SmtpData extends Data
         if (! isset(self::$instance[$name])) {
             // $data = TenantService::getConfig('mail');
             $data = config('mail');
+<<<<<<< HEAD
+=======
+            Assert::isArray($data);
+>>>>>>> 16acc6d3 (up)
             $data_name = Arr::get($data, 'mailers.'.$name);
 
             self::$instance[$name] = self::from($data_name);
