@@ -20,7 +20,7 @@ class EmailData extends Data
 
     public string $body_html;
 
-    public ?string $body=null;
+    public ?string $body = null;
 
     public function getFrom(): Address
     {
@@ -29,8 +29,8 @@ class EmailData extends Data
 
     public function getMimeEmail(): MimeEmail
     {
-        if($this->body==null){
-            $this->body=strip_tags($this->body_html);
+        if (null == $this->body) {
+            $this->body = strip_tags($this->body_html);
         }
         $email = (new MimeEmail())
             ->from($this->getFrom())

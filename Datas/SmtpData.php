@@ -7,8 +7,9 @@ namespace Modules\Notify\Datas;
 use Illuminate\Support\Arr;
 use Modules\Tenant\Services\TenantService;
 use Spatie\LaravelData\Data;
-use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
 class SmtpData extends Data
 {
@@ -37,19 +38,18 @@ class SmtpData extends Data
     public static function make(string $name = 'smtp'): self
     {
         if (! isset(self::$instance[$name])) {
-            //$data = TenantService::getConfig('mail');
-            $data=config('mail');
+            // $data = TenantService::getConfig('mail');
+            $data = config('mail');
             $data_name = Arr::get($data, 'mailers.'.$name);
-            
+
             self::$instance[$name] = self::from($data_name);
         }
 
         return self::$instance[$name];
     }
 
-    
-
-    public function toArray():array {
+    public function toArray(): array
+    {
         return [
             'transport' => $this->transport,
             'host' => $this->host,
@@ -88,7 +88,7 @@ class SmtpData extends Data
 
     public function send(EmailData $emailData): void
     {
-        $mailer=$this->getMailer();
+        $mailer = $this->getMailer();
         $mimeEmail = $emailData->getMimeEmail();
         try {
             $mailer->send($mimeEmail);
