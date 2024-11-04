@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Notify\Models;
 
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
