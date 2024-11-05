@@ -16,39 +16,30 @@ use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 class SmtpData extends Data
 {
     public string $transport = 'smtp';
-
     public ?string $url = null;
-
     public string $host = '127.0.0.1';
-
     public int $port = 2525;
-
     public ?string $encryption = null; // 'tls';
-
     public ?bool $tls = null;
-
     public ?string $username = null;
-
     public ?string $password = null;
-
     public ?string $timeout = null;
-
     public ?string $local_domain = null;
-
     private static array $instance = [];
 
-    public static function make(string $name = 'smtp'): self
+  public static function make(string $name = 'smtp'): self
     {
         if (! isset(self::$instance[$name])) {
-            // $data = TenantService::getConfig('mail');
-            $data = config('mail');
+            //$data = TenantService::getConfig('mail');
+            $data=config('mail');
             $data_name = Arr::get($data, 'mailers.'.$name);
-
             self::$instance[$name] = self::from($data_name);
         }
 
         return self::$instance[$name];
     }
+
+    
 
     public function toArray(): array
     {
