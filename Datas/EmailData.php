@@ -34,10 +34,11 @@ class EmailData extends Data
         if($this->body==null){
             $this->body=strip_tags($this->body_html);
         }
+        
         $email = (new MimeEmail())
             ->from($this->getFrom())
             ->to($this->to)
-            ->subject($this->subject)
+            ->subject(strip_tags($this->subject))
             ->html($this->body_html)
             ->text(strip_tags($this->body));
 
