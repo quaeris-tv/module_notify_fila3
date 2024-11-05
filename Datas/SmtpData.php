@@ -10,38 +10,29 @@ use Spatie\LaravelData\Data;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
-
+/**
+ * Class Modules\Notify\Datas\SmtpData.
+ */
 class SmtpData extends Data
 {
     public string $transport = 'smtp';
-
     public ?string $url = null;
-
     public string $host = '127.0.0.1';
-
     public int $port = 2525;
-
     public ?string $encryption = null; // 'tls';
-
     public ?bool $tls = null;
-
     public ?string $username = null;
-
     public ?string $password = null;
-
     public ?string $timeout = null;
-
     public ?string $local_domain = null;
-
     private static array $instance = [];
 
-    public static function make(string $name = 'smtp'): self
+  public static function make(string $name = 'smtp'): self
     {
         if (! isset(self::$instance[$name])) {
             //$data = TenantService::getConfig('mail');
             $data=config('mail');
             $data_name = Arr::get($data, 'mailers.'.$name);
-            
             self::$instance[$name] = self::from($data_name);
         }
 
@@ -50,7 +41,8 @@ class SmtpData extends Data
 
     
 
-    public function toArray():array {
+    public function toArray(): array
+    {
         return [
             'transport' => $this->transport,
             'host' => $this->host,
@@ -89,7 +81,7 @@ class SmtpData extends Data
 
     public function send(EmailData $emailData): void
     {
-        $mailer=$this->getMailer();
+        $mailer = $this->getMailer();
         $mimeEmail = $emailData->getMimeEmail();
         try {
             $mailer->send($mimeEmail);

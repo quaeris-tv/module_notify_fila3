@@ -4,27 +4,28 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Pages\Page;
-use Illuminate\Support\Arr;
 use Filament\Actions\Action;
-use Webmozart\Assert\Assert;
 use Filament\Facades\Filament;
-use Modules\Xot\Datas\XotData;
-use Symfony\Component\Mime\Email;
-use Modules\Notify\Datas\SmtpData;
-use Modules\Notify\Datas\EmailData;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\Mailer\Mailer;
+use Filament\Forms;
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Contracts\HasForms;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Notifications\Notification;
-use Modules\Notify\Filament\Clusters\Test;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Filament\Pages\Page;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Modules\Notify\Datas\EmailData;
+use Modules\Notify\Datas\SmtpData;
+use Modules\Notify\Filament\Clusters\Test;
+use Modules\Xot\Datas\XotData;
+use Webmozart\Assert\Assert;
 
+/**
+ * @property ComponentContainer $emailForm
+ */
 class TestSmtpPage extends Page implements HasForms
 {
     use InteractsWithForms;
@@ -43,9 +44,8 @@ class TestSmtpPage extends Page implements HasForms
 
     public function emailForm(Form $form): Form
     {
-        $smtpConfig = Arr::get(config('mail'),'mailers.smtp');
-
-       
+        Assert::isArray($mail_config = config('mail'));
+        $smtpConfig = Arr::get($mail_config, 'mailers.smtp');
 
         $this->emailData['subject'] = 'test';
         $defaultEmail = XotData::make()->super_admin;
@@ -57,29 +57,35 @@ class TestSmtpPage extends Page implements HasForms
                         ->schema(
                             [
                                 Forms\Components\TextInput::make('host')
-                                    ->default($smtpConfig['host']),
+                                // ->default($smtpConfig['host'])
+                                ,
                                 Forms\Components\TextInput::make('port')
                                     ->numeric()
-                                    ->default($smtpConfig['port']),
+                                // ->default($smtpConfig['port'])
+                                ,
                                 Forms\Components\TextInput::make('username')
-                                    ->default($smtpConfig['username']),
+                                // ->default($smtpConfig['username'])
+                                ,
                                 Forms\Components\TextInput::make('password')
-                                    ->default($smtpConfig['password']),
+                                // ->default($smtpConfig['password'])
+                                ,
                                 Forms\Components\TextInput::make('encryption')
-                                    ->default($smtpConfig['encryption']),
+                                // ->default($smtpConfig['encryption'])
+                                ,
                             ]
                         )->columns(3),
                     Section::make('MAIL')
                         ->schema(
                             [
                                 Forms\Components\TextInput::make('from_email')
-                                    ->default(config('mail.from.address', $defaultEmail))
+                                    // ->default(config('mail.from.address', $defaultEmail))
                                     ->email()
                                     ->required(),
                                 Forms\Components\TextInput::make('from')
-                                    ->default(config('mail.from.name')),
+                                // ->default(config('mail.from.name'))
+                                ,
                                 Forms\Components\TextInput::make('to')
-                                    ->default($defaultEmail)
+                                    // ->default($defaultEmail)
                                     ->email()
                                     ->required(),
                                 Forms\Components\TextInput::make('subject')
@@ -102,7 +108,6 @@ class TestSmtpPage extends Page implements HasForms
         $smtp = SmtpData::from($data);
         $emailData = EmailData::from($data);
         $smtp->send($emailData);
-        
 
         Notification::make()
             ->success()
@@ -137,6 +142,8 @@ class TestSmtpPage extends Page implements HasForms
 
     protected function fillForms(): void
     {
-        $this->emailForm->fill();
+        Assert::isArray($mail_config = config('mail'));
+        Assert::isArray($smtpConfig = Arr::get($mail_config, 'mailers.smtp'));
+        $this->emailForm->fill($smtpConfig);
     }
 }
