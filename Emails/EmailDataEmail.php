@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 use Modules\Notify\Datas\EmailData;
 
@@ -24,6 +25,7 @@ class EmailDataEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address($this->email_data->from_email,$this->email_data->from),
             subject: $this->email_data->subject,
         );
     }
@@ -34,7 +36,11 @@ class EmailDataEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'notify::emails.email-data-email',
+            html: 'notify::emails.html',
+            text: 'notify::emails.text',
+            with: [
+                'email_data' => $this->email_data,
+            ],
         );
     }
 
@@ -45,6 +51,8 @@ class EmailDataEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            //Attachment::fromPath('/path/to/file'),
+        ];
     }
 }

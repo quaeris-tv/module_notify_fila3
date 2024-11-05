@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Modules\Notify\Datas\EmailData;
 use Modules\Notify\Emails\EmailDataEmail;
-use Modules\Notify\Emails\MailTest;
 use Modules\Notify\Filament\Clusters\Test;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 
@@ -70,14 +69,12 @@ class SendEmail extends Page implements HasForms
 
     public function sendEmail(): void
     {
-        // $data = $this->emailForm->getState();
-        // $email_data = EmailData::from($data);
+        $data = $this->emailForm->getState();
+        $email_data = EmailData::from($data);
 
-        // Mail::to($data['email_to'])->send(
-        //     new EmailDataEmail($email_data)
-        // );
-
-        Mail::to('storgatonicola@provincia.treviso.it')->send(new MailTest());
+        Mail::to($data['email_to'])->send(
+            new EmailDataEmail($email_data)
+        );
 
         Notification::make()
             ->success()
