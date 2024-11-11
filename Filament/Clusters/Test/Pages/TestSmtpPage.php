@@ -107,6 +107,10 @@ class TestSmtpPage extends Page implements HasForms
         $data = $this->emailForm->getState();
         $smtp = SmtpData::from($data);
         $emailData = EmailData::from($data);
+        // dddx([
+        //    'a' => $emailData,
+        // 'b' => EmailData::make(),
+        // ]);
         $smtp->send($emailData);
 
         Notification::make()
