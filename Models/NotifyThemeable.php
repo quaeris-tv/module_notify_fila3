@@ -38,8 +38,5 @@ use Illuminate\Support\Carbon;
  */
 class NotifyThemeable extends BaseMorphPivot
 {
-<<<<<<< HEAD
     // ...
-=======
->>>>>>> 72c47477 (.)
 }
