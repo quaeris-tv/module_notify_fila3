@@ -57,7 +57,6 @@ class ListNotifications extends ListRecords
             TextColumn::make('type'),
         ];
     }
-
     public function getTableActions(): array
     {
         return [

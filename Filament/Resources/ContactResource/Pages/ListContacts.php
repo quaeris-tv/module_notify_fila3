@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\ContactResource\Pages;
 
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Enums\ActionsPosition;
-use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
-use Modules\Notify\Filament\Resources\ContactResource;
+use Filament\Actions\CreateAction;
 use Modules\UI\Enums\TableLayoutEnum;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Resources\Pages\ListRecords;
+use Filament\Tables\Enums\ActionsPosition;
+use Modules\Xot\Filament\Traits\HasXotTable;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Modules\Notify\Filament\Resources\ContactResource;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
 class ListContacts extends ListRecords
 {
+    use HasXotTable;
     public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
 
     protected static string $resource = ContactResource::class;

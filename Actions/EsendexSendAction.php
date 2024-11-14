@@ -48,7 +48,9 @@ class EsendexSendAction
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_URL, $this->base_endpoint.'sms');
         curl_setopt(
-            $ch, CURLOPT_HTTPHEADER, [
+            $ch,
+            CURLOPT_HTTPHEADER,
+            [
                 'Content-type: application/json',
                 'user_key: '.$auth[0],
                 'Session_key: '.$auth[1],
