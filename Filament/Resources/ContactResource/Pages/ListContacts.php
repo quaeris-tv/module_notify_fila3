@@ -13,13 +13,13 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Enums\ActionsPosition;
 use Modules\Xot\Filament\Traits\HasXotTable;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Modules\Xot\Filament\Pages\XotBaseListRecords;
 use Modules\Notify\Filament\Resources\ContactResource;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
-class ListContacts extends ListRecords
+class ListContacts extends XotBaseListRecords
 {
-    use HasXotTable;
-    public TableLayoutEnum $layoutView = TableLayoutEnum::LIST;
+   
 
     protected static string $resource = ContactResource::class;
 

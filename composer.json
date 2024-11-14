@@ -39,13 +39,16 @@
         }
     },
     "require": {
+        "aws/aws-sdk-php": "*",
         "filament/filament": "*",
         "illuminate/contracts": "*",
         "illuminate/support": "*",
         "irazasyed/telegram-bot-sdk": "*",
         "kreait/laravel-firebase": "*",
         "laravel-notification-channels/telegram": "^5.0",
-        "phpdocumentor/type-resolver": "*"
+        "phpdocumentor/type-resolver": "*",
+        "symfony/http-client": "*",
+        "symfony/postmark-mailer": "*"
     },
     "repositories": [
         {
