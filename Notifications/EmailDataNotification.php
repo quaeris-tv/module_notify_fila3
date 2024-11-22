@@ -10,7 +10,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Modules\Notify\Datas\EmailData;
 
-class EmailDataNotification extends Notification 
+class EmailDataNotification extends Notification
 {
     use Queueable;
 

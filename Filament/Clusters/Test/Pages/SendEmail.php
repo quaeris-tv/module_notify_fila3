@@ -27,6 +27,7 @@ use Modules\Xot\Filament\Traits\NavigationLabelTrait;
 class SendEmail extends Page implements HasForms
 {
     use InteractsWithForms;
+
     // use NavigationLabelTrait;
 
     public ?array $emailData = [];
@@ -71,7 +72,7 @@ class SendEmail extends Page implements HasForms
     {
         $data = $this->emailForm->getState();
         $email_data = EmailData::from($data);
-        
+
 
         Mail::to($data['to'])->send(
             new EmailDataEmail($email_data)
