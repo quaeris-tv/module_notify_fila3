@@ -33,7 +33,7 @@ class SmtpData extends Data
         if (! isset(self::$instance[$name])) {
             // $data = TenantService::getConfig('mail');
             Assert::isArray($data = config('mail'));
-            $data_name = Arr::get($data, 'mailers.'.$name);
+            $data_name = Arr::get($data, 'mailers.' . $name);
             self::$instance[$name] = self::from($data_name);
         }
 
@@ -71,7 +71,7 @@ class SmtpData extends Data
         try {
             $transport->start();
         } catch (\Exception $e) {
-            throw new \Exception('Errore durante la connessione SMTP: '.$e->getMessage());
+            throw new \Exception('Errore durante la connessione SMTP: ' . $e->getMessage());
         }
         $mailer = new Mailer($transport);
 
@@ -85,7 +85,7 @@ class SmtpData extends Data
         try {
             $mailer->send($mimeEmail);
         } catch (\Exception $e) {
-            throw new \Exception("Errore durante l'invio dell'email: ".$e->getMessage());
+            throw new \Exception("Errore durante l'invio dell'email: " . $e->getMessage());
         }
     }
 }
