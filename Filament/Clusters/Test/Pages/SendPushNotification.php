@@ -119,8 +119,14 @@ class SendPushNotification extends Page implements HasForms
         $message = CloudMessage::withTarget('token', $deviceToken)
             ->withHighestPossiblePriority()
             ->withData($push_data);
-
-        $messaging->send($message);
+        try{
+            $messaging->send($message);
+        }catch(\Exception $e){
+            dddx([
+                'message'=>$e->getMessage(),
+                'deviceToken'=>$deviceToken,
+            ]);
+        }
 
         Notification::make()
             ->success()
