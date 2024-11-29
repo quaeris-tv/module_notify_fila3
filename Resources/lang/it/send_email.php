@@ -22,14 +22,26 @@
     'to' => 
     array (
       'label' => 'to',
+      'fields' => 
+      array (
+        'label' => 'to',
+      ),
     ),
     'subject' => 
     array (
       'label' => 'subject',
+      'fields' => 
+      array (
+        'label' => 'subject',
+      ),
     ),
     'body_html' => 
     array (
       'label' => 'body_html',
+      'fields' => 
+      array (
+        'label' => 'body_html',
+      ),
     ),
   ),
   'actions' => 
