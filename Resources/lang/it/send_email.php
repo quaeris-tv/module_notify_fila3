@@ -19,6 +19,7 @@
     'parent.name' => 'Settore di appartenenza',
     'parent_name' => 'Settore di appartenenza',
     'assets' => 'Quantità di asset',
+<<<<<<< HEAD
     'to' => 
     array (
       'label' => 'to',
@@ -42,6 +43,11 @@
       array (
         'label' => 'body_html',
       ),
+=======
+    'body_html' => 
+    array (
+      'label' => 'body_html',
+>>>>>>> 9f13c4ea57c719131e7ab10b234871d59ee86ce7
     ),
   ),
   'actions' => 
