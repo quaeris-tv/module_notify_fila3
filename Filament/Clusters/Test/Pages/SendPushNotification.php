@@ -79,7 +79,7 @@ class SendPushNotification extends Page implements HasForms
             ->schema(
                 [
                     Forms\Components\Select::make('deviceToken')
-                        ->label('profile.full_name (device.robot) ultimi 5 cararatteri push_notifications_token')
+                        
                         ->options($to),
 
                     Forms\Components\TextInput::make('type')
