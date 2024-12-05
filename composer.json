@@ -45,6 +45,7 @@
         "illuminate/support": "*",
         "irazasyed/telegram-bot-sdk": "*",
         "kreait/laravel-firebase": "*",
+        "laravel-notification-channels/fcm": "*",
         "laravel-notification-channels/telegram": "^5.0",
         "phpdocumentor/type-resolver": "*",
         "symfony/http-client": "*",
