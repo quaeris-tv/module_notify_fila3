@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Notify\Models;
 
 use Eloquent;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -25,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null     $updated_at
  * @property string|null     $updated_by
  * @property Model|\Eloquent $notifiable
+ *
  * @method static DatabaseNotificationCollection<int, static>                all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static>                get($columns = ['*'])
  * @method static \Illuminate\Database\Eloquent\Builder|Notification         newModelQuery()
@@ -189,7 +189,9 @@ use Illuminate\Support\Carbon;
  * @method static DatabaseNotificationCollection<int, static>                get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static>                all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static>                get($columns = ['*'])
+ *
  * @mixin \Eloquent
+ *
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
@@ -224,10 +226,13 @@ use Illuminate\Support\Carbon;
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> all($columns = ['*'])
  * @method static DatabaseNotificationCollection<int, static> get($columns = ['*'])
+ *
  * @property string|null $deleted_at
  * @property string|null $deleted_by
- * @method static Builder<static>|Notification whereDeletedAt($value)
- * @method static Builder<static>|Notification whereDeletedBy($value)
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification whereDeletedBy($value)
+ *
  * @mixin Eloquent
  */
 class Notification extends DatabaseNotification

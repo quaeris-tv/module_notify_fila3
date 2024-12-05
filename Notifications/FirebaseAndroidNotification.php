@@ -35,7 +35,7 @@ class FirebaseAndroidNotification extends Notification implements MobilePushNoti
      *
      * @param mixed $notifiable the entity to be notified
      *
-     * @throws \InvalidArgumentException if no delivery channels are available for the notifiable entity
+     * throws \InvalidArgumentException if no delivery channels are available for the notifiable entity
      */
     public function via(mixed $notifiable): array
     {
