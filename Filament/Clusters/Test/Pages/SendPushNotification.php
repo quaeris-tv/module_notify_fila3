@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Clusters\Test\Pages;
 
-use Exception;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -21,9 +20,10 @@ use Kreait\Firebase\Messaging\CloudMessage;
 use Modules\Notify\Filament\Clusters\Test;
 use Modules\User\Models\DeviceUser;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
-use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
+
+use Webmozart\Assert\Assert;
 
 /**
  * @property ComponentContainer $notificationForm
@@ -61,12 +61,12 @@ class SendPushNotification extends Page implements HasForms
         /**
          * ---.
          */
-        $callback = fn ($item) => [$item->push_notifications_token => $item->profile->full_name . ' (' . $item->device?->robot . ') ' . mb_substr($item->push_notifications_token, -5)];
+        $callback = fn ($item) => [$item->push_notifications_token => $item->profile->full_name.' ('.$item->device?->robot.') '.mb_substr($item->push_notifications_token, -5)];
 
         /**
          * ---.
          */
-        $filterCallback = fn ($item): bool => $item->profile !== null;
+        $filterCallback = fn ($item): bool => null !== $item->profile;
 
         $to = $devices
             ->filter($filterCallback)
@@ -79,7 +79,11 @@ class SendPushNotification extends Page implements HasForms
             ->schema(
                 [
                     Forms\Components\Select::make('deviceToken')
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> origin/v0.2.10
                         ->options($to),
 
                     Forms\Components\TextInput::make('type')
@@ -119,8 +123,14 @@ class SendPushNotification extends Page implements HasForms
         $message = CloudMessage::withTarget('token', $deviceToken)
             ->withHighestPossiblePriority()
             ->withData($push_data);
-
-        $messaging->send($message);
+        try {
+            $messaging->send($message);
+        } catch (\Exception $e) {
+            dddx([
+                'message' => $e->getMessage(),
+                'deviceToken' => $deviceToken,
+            ]);
+        }
 
         Notification::make()
             ->success()
@@ -151,7 +161,7 @@ class SendPushNotification extends Page implements HasForms
         $user = Filament::auth()->user();
 
         if (! $user instanceof Model) {
-            throw new Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
+            throw new \Exception('The authenticated user object must be an Eloquent model to allow the profile page to update it.');
         }
 
         return $user;
