@@ -79,7 +79,7 @@ class SendPushNotification extends Page implements HasForms
             ->schema(
                 [
                     Forms\Components\Select::make('deviceToken')
-                        
+
                         ->options($to),
 
                     Forms\Components\TextInput::make('type')
@@ -140,8 +140,8 @@ class SendPushNotification extends Page implements HasForms
     {
         return [
             Action::make('notificationFormActions')
-                // ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->label(__('send'))
+                //
+
                 ->submit('notificationFormActions'),
         ];
     }

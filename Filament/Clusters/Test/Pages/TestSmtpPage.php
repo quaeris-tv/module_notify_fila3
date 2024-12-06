@@ -128,7 +128,7 @@ class TestSmtpPage extends Page implements HasForms
     {
         return [
             Action::make('emailFormActions')
-                ->label(__('Invia'))
+
                 ->submit('emailFormActions'),
         ];
     }
