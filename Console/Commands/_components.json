@@ -1,1 +1,1 @@
-[{"class_name":"SendMailCommand","comp_name":"send-mail-command","comp_ns":"Modules\\Notify\\SendMailCommand"},{"class_name":"TelegramWebhook","comp_name":"telegram-webhook","comp_ns":"Modules\\Notify\\TelegramWebhook"}]
+[{"name":"send-mail-command","class":"SendMailCommand","module":null,"path":null,"ns":"Modules\\Notify\\SendMailCommand"},{"name":"telegram-webhook","class":"TelegramWebhook","module":null,"path":null,"ns":"Modules\\Notify\\TelegramWebhook"}]
