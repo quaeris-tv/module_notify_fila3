@@ -144,8 +144,8 @@ class SendPushNotification extends Page implements HasForms
     {
         return [
             Action::make('notificationFormActions')
-                // ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->label(__('send'))
+                //
+
                 ->submit('notificationFormActions'),
         ];
     }

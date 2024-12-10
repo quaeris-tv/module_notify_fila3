@@ -76,7 +76,7 @@ class SendTelegram extends Page implements HasForms
         Assert::string($token = config('services.telegram-bot-api.token'));
         $url = 'https://api.telegram.org/bot' . $token . '/getMe';
         Http::get($url);
-// dddx($response->json());
+        // dddx($response->json());
         /*
          "ok" => true
             "result" => array:8 [▼
@@ -114,8 +114,8 @@ class SendTelegram extends Page implements HasForms
     {
         return [
             Action::make('emailFormActions')
-                // ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->label(__('send'))
+                //
+
                 ->submit('emailFormActions'),
         ];
     }

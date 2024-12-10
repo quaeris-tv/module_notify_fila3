@@ -96,8 +96,8 @@ class SendEmail extends Page implements HasForms
     {
         return [
             Action::make('emailFormActions')
-                // ->label(__('filament-panels::pages/auth/edit-profile.form.actions.save.label'))
-                ->label(__('send'))
+                //
+
                 ->submit('emailFormActions'),
         ];
     }
