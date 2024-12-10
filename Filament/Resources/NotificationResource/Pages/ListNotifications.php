@@ -20,28 +20,10 @@ use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
 class ListNotifications extends XotBaseListRecords
 {
-    
+
     protected static string $resource = NotificationResource::class;
 
-    public function table(Table $table): Table
-    {
-        return $table
-            // ->columns($this->getTableColumns())
-            ->columns($this->layoutView->getTableColumns())
-            ->contentGrid($this->layoutView->getTableContentGrid())
-            ->headerActions($this->getTableHeaderActions())
 
-            ->filters($this->getTableFilters())
-            ->filtersLayout(FiltersLayout::AboveContent)
-            ->persistFiltersInSession()
-            ->actions($this->getTableActions())
-            ->bulkActions($this->getTableBulkActions())
-            ->actionsPosition(ActionsPosition::BeforeColumns)
-            ->defaultSort(
-                column: 'created_at',
-                direction: 'DESC',
-            );
-    }
 
     public function getGridTableColumns(): array
     {
@@ -70,7 +52,7 @@ class ListNotifications extends XotBaseListRecords
         ];
     }
 
-    
+
 
     protected function getHeaderActions(): array
     {

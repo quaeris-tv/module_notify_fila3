@@ -33,33 +33,5 @@ class LinkableRelationManager extends XotBaseRelationManager
             );
     }
 
-    public function table(Table $table): Table
-    {
-        return $table
-            ->columns(
-                [
-                    TextColumn::make('id'),
-                ]
-            )
-            ->filters(
-                [
-                ]
-            )
-            ->headerActions(
-                [
-                    CreateAction::make(),
-                ]
-            )
-            ->actions(
-                [
-                    EditAction::make(),
-                    DeleteAction::make(),
-                ]
-            )
-            ->bulkActions(
-                [
-                    DeleteBulkAction::make(),
-                ]
-            );
-    }
+
 }
