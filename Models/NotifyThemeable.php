@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 
 /**
@@ -33,6 +32,11 @@ use Illuminate\Support\Carbon;
  *
  * @property \Modules\Xot\Contracts\ProfileContract|null $creator
  * @property \Modules\Xot\Contracts\ProfileContract|null $updater
+ * @property Carbon|null                                 $deleted_at
+ * @property string|null                                 $deleted_by
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotifyThemeable whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotifyThemeable whereDeletedBy($value)
  *
  * @mixin \Eloquent
  */
