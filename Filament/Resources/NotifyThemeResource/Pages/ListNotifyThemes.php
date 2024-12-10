@@ -16,12 +16,7 @@ class ListNotifyThemes extends XotBaseListRecords
     
     protected static string $resource = NotifyThemeResource::class;
 
-    protected function getTableHeaderActions(): array
-    {
-        return [
-            TableLayoutToggleTableAction::make(),
-        ];
-    }
+    
 
     protected function getHeaderActions(): array
     {
