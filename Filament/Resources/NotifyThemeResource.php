@@ -78,7 +78,7 @@ class NotifyThemeResource extends XotBaseResource
             ->toArray();
     }
 
-    public static function table(Table $table): Table
+    public static function tableOLD(Table $table): Table
     {
         return $table
             ->columns(
