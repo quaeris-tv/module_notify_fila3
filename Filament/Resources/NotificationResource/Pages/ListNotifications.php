@@ -37,6 +37,11 @@ class ListNotifications extends XotBaseListRecords
             TextColumn::make('type'),
         ];
     }
+    /**
+     * Undocumented function
+     *
+     * @return array<\Filament\Tables\Actions\Action|\Filament\Tables\Actions\ActionGroup>
+     */
     public function getTableActions(): array
     {
         return [
