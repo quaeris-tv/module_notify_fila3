@@ -14,13 +14,9 @@ use Illuminate\Support\Str;
 class SmsService
 {
     public ?string $from = null;
-
     public string $to;
-
     public string $driver = 'netfun';
-
     public ?string $body = null;
-
     public array $vars = [];
 
     private static ?self $instance = null;
@@ -58,7 +54,7 @@ class SmsService
 
     public function send(): self
     {
-        $class = '\Modules\Notify\Services\SmsEngines\\' . Str::studly($this->driver) . 'Engine';
+        $class = '\Modules\Notify\Services\SmsEngines\\'.Str::studly($this->driver).'Engine';
         $instance = $class::make()
             ->setLocalVars($this->vars)
             ->send();
