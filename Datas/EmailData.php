@@ -76,6 +76,7 @@ class EmailData extends Data
             ->text(strip_tags($this->body));
 
         foreach ($this->attachments as $attachment) {
+            Assert::string($attachment);
             $email->attachFromPath($attachment); // string $path, ?string $name = null, ?string $contentType = null
         }
 
