@@ -6,23 +6,16 @@ namespace Modules\Notify\Services;
 
 use Illuminate\Support\Str;
 
-// ---------CSS------------
-
 /**
- * Class SmsService.
+ * Class odules\Notify\Services\MailService.
  */
 class MailService
 {
     public ?string $from = null;
-
     public string $to;
-
     public string $driver = 'duocircle';
-
     public ?string $body = null;
-
     public array $vars = [];
-
     private static ?self $instance = null;
 
     public static function getInstance(): self
@@ -61,7 +54,7 @@ class MailService
      */
     public function send(): self
     {
-        $class = '\Modules\Notify\Services\MailEngines\\' . Str::studly($this->driver) . 'Engine';
+        $class = '\Modules\Notify\Services\MailEngines\\'.Str::studly($this->driver).'Engine';
         $class::make()
             ->setLocalVars($this->vars)
             ->send();
@@ -74,7 +67,7 @@ class MailService
      */
     public function try(): self
     {
-        $class = '\Modules\Notify\Services\MailEngines\\' . Str::studly($this->driver) . 'Engine';
+        $class = '\Modules\Notify\Services\MailEngines\\'.Str::studly($this->driver).'Engine';
         $class::make()
             ->setLocalVars($this->vars)
             ->try();
