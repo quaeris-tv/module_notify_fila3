@@ -15,25 +15,25 @@
     ],
     "homepage": "https://github.com/laraxot/module_notify_fila3.git",
     "license": "MIT",
-    "authors": [{
-        "name": "Marco Sottana",
-        "email": "marco.sottana@gmail.com",
-        "role": "Developer"
-    }],
+    "authors": [
+        {
+            "name": "Marco Sottana",
+            "email": "marco.sottana@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "extra": {
         "laravel": {
             "providers": [
                 "Modules\\Notify\\Providers\\NotifyServiceProvider",
                 "Modules\\Notify\\Providers\\Filament\\AdminPanelProvider"
             ],
-            "aliases": {
-
-            }
+            "aliases": {}
         }
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Notify\\": "",
+            "Modules\\Notify\\": "app/",
             "Modules\\Notify\\Database\\Factories\\": "database/factories/",
             "Modules\\Notify\\Database\\Seeders\\": "database/seeders/"
         }
@@ -51,9 +51,7 @@
         "symfony/http-client": "*",
         "symfony/postmark-mailer": "*"
     },
-    "require-dev": {
-        
-    },
+    "require-dev": {},
     "repositories": [
         {
             "type": "path",
