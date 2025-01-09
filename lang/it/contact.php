@@ -1,4 +1,5 @@
-<?php return array (
+<?php 
+return array (
   'resource' => 
   array (
     'name' => 'Contact',
@@ -10,8 +11,8 @@
     'group' => 
     array (
       'name' => 'Admin',
-    ),
-    'label' => 'contact.navigation',
+    ),'
+    'label' => 'contact',
   ),
   'fields' => 
   array (
@@ -42,4 +43,4 @@
       ),
     ),
   ),
-);
+);

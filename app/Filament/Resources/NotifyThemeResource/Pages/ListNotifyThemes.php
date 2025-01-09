@@ -9,7 +9,7 @@ use Modules\UI\Enums\TableLayoutEnum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Modules\Xot\Filament\Pages\XotBaseListRecords;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
 use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
 
