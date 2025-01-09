@@ -1,4 +1,5 @@
-<?php return array (
+<?php 
+return array (
   'resource' => 
   array (
     'name' => 'notify_themes',
@@ -10,8 +11,8 @@
     'group' => 
     array (
       'name' => 'Admin',
-    ),
-    'label' => 'notify theme.navigation',
+    ),'
+    'label' => 'notify theme',
   ),
   'fields' => 
   array (
@@ -48,4 +49,4 @@
     'create' => 'Aggiungi',
     'edit' => 'Modifica',
   ),
-);
+);

@@ -1,4 +1,5 @@
-<?php return array (
+<?php 
+return array (
   'resource' => 
   array (
     'name' => 'notification',
@@ -10,8 +11,8 @@
     'group' => 
     array (
       'name' => 'Admin',
-    ),
-    'label' => 'notification.navigation',
+    ),'
+    'label' => 'notification',
   ),
   'fields' => 
   array (
@@ -46,4 +47,4 @@
       ),
     ),
   ),
-);
+);
