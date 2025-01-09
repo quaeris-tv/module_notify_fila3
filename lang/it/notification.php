@@ -11,6 +11,7 @@
     array (
       'name' => 'Admin',
     ),
+    'label' => 'notification.navigation',
   ),
   'fields' => 
   array (
