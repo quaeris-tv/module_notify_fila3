@@ -7,11 +7,11 @@ return array (
   'navigation' => 
   array (
     'name' => 'notification',
-    'plural' => 'notification',
+    'plural' => 'notifications',  // Modificato in "notifications" per coerenza plurale
     'group' => 
     array (
       'name' => 'Admin',
-    ),'
+    ),
     'label' => 'notification',
   ),
   'fields' => 
@@ -23,7 +23,7 @@ return array (
     'assets' => 'Quantità di asset',
     'type' => 
     array (
-      'fields' => 'type',
+      'name' => 'Tipo',  // Aggiunta una descrizione per "type"
     ),
   ),
   'actions' => 
