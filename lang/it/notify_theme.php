@@ -4,7 +4,14 @@ return [
   'navigation' => [
     'name' => 'notify_themes',
     'plural' => 'notify_themes',
+<<<<<<< HEAD
     'group' => ['name' => 'Admin'],
+=======
+    'group' => 
+    array (
+      'name' => 'Admin',
+    ),
+>>>>>>> origin/dev
     'label' => 'notify theme',
   ],
   'fields' => [
