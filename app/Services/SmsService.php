@@ -14,9 +14,13 @@ use Illuminate\Support\Str;
 class SmsService
 {
     public ?string $from = null;
+
     public string $to;
+
     public string $driver = 'netfun';
+
     public ?string $body = null;
+
     public array $vars = [];
 
     private static ?self $instance = null;
@@ -24,7 +28,7 @@ class SmsService
     public static function getInstance(): self
     {
         if (! self::$instance instanceof self) {
-            self::$instance = new self();
+            self::$instance = new self;
         }
 
         return self::$instance;

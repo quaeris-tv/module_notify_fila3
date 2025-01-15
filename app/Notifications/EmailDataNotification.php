@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Notify\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Modules\Notify\Datas\EmailData;
@@ -36,7 +35,7 @@ class EmailDataNotification extends Notification
      */
     public function toMail(mixed $notifiable): MailMessage
     {
-        $mailMessage = (new MailMessage())
+        $mailMessage = (new MailMessage)
             ->subject($this->emailData->subject)
             ->line($this->emailData->body);
 

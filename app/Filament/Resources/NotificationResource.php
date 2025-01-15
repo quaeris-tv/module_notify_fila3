@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace Modules\Notify\Filament\Resources;
 
 use Filament\Forms\Form;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Table;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages\CreateNotification;
 // use Modules\Notify\Filament\Resources\NotificationResource\RelationManagers;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages\EditNotification;
@@ -34,8 +30,6 @@ class NotificationResource extends XotBaseResource
                 ]
             );
     }
-
-
 
     public static function getRelations(): array
     {

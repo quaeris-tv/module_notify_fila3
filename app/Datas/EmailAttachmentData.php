@@ -9,7 +9,9 @@ use Spatie\LaravelData\Data;
 class EmailAttachmentData extends Data
 {
     public string $name;
+
     public string $contentType;
+
     private string $content;
 
     public function __construct(
