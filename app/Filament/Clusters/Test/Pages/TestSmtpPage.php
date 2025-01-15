@@ -31,10 +31,13 @@ class TestSmtpPage extends Page implements HasForms
     use InteractsWithForms;
 
     public ?array $emailData = [];
+
     public ?string $error_message = null;
 
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
+
     protected static string $view = 'notify::filament.pages.send-email';
+
     protected static ?string $cluster = Test::class;
 
     public function mount(): void

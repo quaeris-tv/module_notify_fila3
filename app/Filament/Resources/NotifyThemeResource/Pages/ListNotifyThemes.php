@@ -4,21 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\NotifyThemeResource\Pages;
 
-use Filament\Tables\Table;
-use Modules\UI\Enums\TableLayoutEnum;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\CreateAction;
-use Filament\Resources\Pages\ListRecords;
-use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
-use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListNotifyThemes extends XotBaseListRecords
 {
-    
     protected static string $resource = NotifyThemeResource::class;
-
-    
 
     // protected function getHeaderActions(): array
     // {
@@ -34,10 +28,9 @@ class ListNotifyThemes extends XotBaseListRecords
             ->filters($this->getTableFilters())
             ->actions($this->getTableActions())
             ->bulkActions($this->getTableBulkActions())
-            ->headerActions($this->getTableHeaderActions())
-            // ->defaultSort('pos', 'asc')
-            // ->reorderable('pos')
-            ;
+            ->headerActions($this->getTableHeaderActions());
+        // ->defaultSort('pos', 'asc')
+        // ->reorderable('pos')
     }
 
     public function getTableColumns(): array

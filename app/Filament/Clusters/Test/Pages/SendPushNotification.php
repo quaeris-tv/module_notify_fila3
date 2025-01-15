@@ -20,10 +20,9 @@ use Kreait\Firebase\Messaging\CloudMessage;
 use Modules\Notify\Filament\Clusters\Test;
 use Modules\User\Models\DeviceUser;
 use Modules\Xot\Filament\Traits\NavigationLabelTrait;
+use Webmozart\Assert\Assert;
 
 use function Safe\json_encode;
-
-use Webmozart\Assert\Assert;
 
 /**
  * @property ComponentContainer $notificationForm
@@ -66,7 +65,7 @@ class SendPushNotification extends Page implements HasForms
         /**
          * ---.
          */
-        $filterCallback = fn ($item): bool => null !== $item->profile;
+        $filterCallback = fn ($item): bool => $item->profile !== null;
 
         $to = $devices
             ->filter($filterCallback)

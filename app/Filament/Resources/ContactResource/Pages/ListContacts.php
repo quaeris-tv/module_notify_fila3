@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\ContactResource\Pages;
 
-use Filament\Tables\Table;
 use Filament\Actions\CreateAction;
-use Modules\UI\Enums\TableLayoutEnum;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Resources\Pages\ListRecords;
-use Filament\Tables\Enums\ActionsPosition;
-use Modules\Xot\Filament\Traits\HasXotTable;
 use Filament\Tables\Actions\DeleteBulkAction;
-use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\ContactResource;
-use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListContacts extends XotBaseListRecords
 {

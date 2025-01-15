@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\NotificationResource\Pages;
 
-use Filament\Tables\Table;
 use Filament\Actions\CreateAction;
-use Modules\UI\Enums\TableLayoutEnum;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Enums\FiltersLayout;
-use Filament\Resources\Pages\ListRecords;
-use Filament\Tables\Enums\ActionsPosition;
-use Modules\Xot\Filament\Traits\TransTrait;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 use Modules\Notify\Filament\Resources\NotificationResource;
-use Modules\UI\Filament\Actions\Table\TableLayoutToggleTableAction;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListNotifications extends XotBaseListRecords
 {

@@ -12,12 +12,17 @@ use Webmozart\Assert\Assert;
 class EmailData extends Data
 {
     public string $to;
+
     public string $from;
+
     public string $from_email;
 
     public string $subject;
+
     public string $body_html;
+
     public string $body;
+
     public array $attachments = [];
 
     public function __construct(
@@ -50,11 +55,11 @@ class EmailData extends Data
 
     public function getFrom(): Address
     {
-        if (null == $this->from) {
+        if ($this->from == null) {
             Assert::string($from = config('mail.from.name', 'Default Sender'));
             $this->from = $from;
         }
-        if (null == $this->from_email) {
+        if ($this->from_email == null) {
             Assert::string($from_email = config('mail.from.address', 'default@example.com'));
             $this->from_email = $from_email;
         }
@@ -64,11 +69,11 @@ class EmailData extends Data
 
     public function getMimeEmail(): MimeEmail
     {
-        if (null == $this->body) {
+        if ($this->body == null) {
             $this->body = strip_tags($this->body_html);
         }
 
-        $email = (new MimeEmail())
+        $email = (new MimeEmail)
             ->from($this->getFrom())
             ->to($this->to)
             ->subject(strip_tags($this->subject))
