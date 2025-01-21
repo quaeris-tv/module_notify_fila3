@@ -41,30 +41,5 @@ class ListNotifications extends XotBaseListRecords
         ];
     }
 
-    /**
-     * Undocumented function
-     *
-     * @return array<\Filament\Tables\Actions\Action|\Filament\Tables\Actions\ActionGroup>
-     */
-    public function getTableActions(): array
-    {
-        return [
-            EditAction::make()
-                ->label(''),
-        ];
-    }
-
-    public function getTableBulkActions(): array
-    {
-        return [
-            DeleteBulkAction::make(),
-        ];
-    }
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            CreateAction::make(),
-        ];
-    }
+    
 }
