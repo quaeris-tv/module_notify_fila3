@@ -65,3 +65,4 @@ cache/
 .git-blame-ignore-revs
 .php-cs-fixer.cache
 .git-blame-ignore-revs
+*.exe
