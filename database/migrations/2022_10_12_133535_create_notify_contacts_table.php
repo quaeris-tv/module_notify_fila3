@@ -6,11 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Notify\Models\Contact;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< HEAD:Database/Migrations/2022_10_12_133535_create_notify_contacts_table.php
 return new class() extends XotBaseMigration {
-=======
-return new class () extends XotBaseMigration {
->>>>>>> origin/dev:database/migrations/2022_10_12_133535_create_notify_contacts_table.php
     protected ?string $model_class = Contact::class;
 
     /**

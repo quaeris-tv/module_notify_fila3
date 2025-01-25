@@ -6,11 +6,7 @@ declare(strict_types=1);
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< HEAD:Database/Migrations/2022_10_12_133532_create_notifications_table.php
 return new class() extends XotBaseMigration {
-=======
-return new class () extends XotBaseMigration {
->>>>>>> origin/dev:database/migrations/2022_10_12_133532_create_notifications_table.php
     /**
      * Run the migrations.
      */
