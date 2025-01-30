@@ -3,8 +3,8 @@
 namespace Modules\Notify\Filament\Resources;
 
 use Filament\Resources\Resource;
-use Modules\Notify\Models\Notification;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages;
+use Modules\Notify\Models\Notification;
 
 class NotificationResource extends Resource
 {

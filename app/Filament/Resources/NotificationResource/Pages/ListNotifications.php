@@ -2,7 +2,6 @@
 
 namespace Modules\Notify\Filament\Resources\NotificationResource\Pages;
 
-use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\NotificationResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
@@ -36,6 +35,4 @@ class ListNotifications extends XotBaseListRecords
                 ->sortable(),
         ];
     }
-
-
 }
