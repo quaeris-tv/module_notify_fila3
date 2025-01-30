@@ -9,10 +9,10 @@ class Notification extends BaseModel
     protected $fillable = [
         'message',
         'type',
-        'read_at'
+        'read_at',
     ];
 
     protected $casts = [
-        'read_at' => 'datetime'
+        'read_at' => 'datetime',
     ];
 }
