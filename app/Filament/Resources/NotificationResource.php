@@ -8,6 +8,9 @@ use Modules\Notify\Models\Notification;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
+/**
+ * NotificationResource
+ */
 class NotificationResource extends XotBaseResource
 {
     protected static ?string $model = Notification::class;
