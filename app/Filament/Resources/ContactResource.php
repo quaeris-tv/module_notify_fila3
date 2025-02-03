@@ -12,8 +12,6 @@ class ContactResource extends XotBaseResource
 {
     protected static ?string $model = Contact::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function getFormSchema(): array
     {
         return [
