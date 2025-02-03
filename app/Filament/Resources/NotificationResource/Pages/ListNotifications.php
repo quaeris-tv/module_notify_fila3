@@ -2,7 +2,6 @@
 
 namespace Modules\Notify\Filament\Resources\NotificationResource\Pages;
 
-use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
@@ -39,6 +38,7 @@ class ListNotifications extends XotBaseListRecords
                 ->sortable(),
         ];
     }
+<<<<<<< HEAD
 
     public function getTableFilters(): array
     {
@@ -67,4 +67,6 @@ class ListNotifications extends XotBaseListRecords
             \Filament\Tables\Actions\DeleteBulkAction::make(),
         ];
     }
+=======
+>>>>>>> origin/dev
 }

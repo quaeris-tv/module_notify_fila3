@@ -10,5 +10,9 @@ class ViewNotification extends XotBaseViewRecord
 {
     protected static string $resource = NotificationResource::class;
 
+<<<<<<< HEAD
    
 }
+=======
+   }
+>>>>>>> origin/dev

@@ -2,11 +2,17 @@
 
 namespace Modules\Notify\Filament\Resources;
 
+<<<<<<< HEAD
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Modules\Notify\Models\Notification;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages;
 use Modules\Xot\Filament\Resources\XotBaseResource;
+=======
+use Filament\Resources\Resource;
+use Modules\Notify\Filament\Resources\NotificationResource\Pages;
+use Modules\Notify\Models\Notification;
+>>>>>>> origin/dev
 
 /**
  * NotificationResource
