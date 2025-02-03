@@ -4,6 +4,9 @@ namespace Modules\Notify\Filament\Resources\NotificationResource\Pages;
 
 use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
 use Modules\Notify\Filament\Resources\NotificationResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
@@ -37,5 +40,31 @@ class ListNotifications extends XotBaseListRecords
         ];
     }
 
+    public function getTableFilters(): array
+    {
+        return [
+            \Filament\Tables\Filters\SelectFilter::make('type')
+                ->options(fn () => \Modules\Notify\Models\Notification::distinct()->pluck('type', 'type')->toArray()),
+            \Filament\Tables\Filters\Filter::make('read')
+                ->query(fn ($query) => $query->whereNotNull('read_at')),
+            \Filament\Tables\Filters\Filter::make('unread')
+                ->query(fn ($query) => $query->whereNull('read_at')),
+        ];
+    }
 
+    public function getTableActions(): array
+    {
+        return [
+            ViewAction::make(),
+            EditAction::make(),
+            DeleteAction::make(),
+        ];
+    }
+
+    public function getTableBulkActions(): array
+    {
+        return [
+            \Filament\Tables\Actions\DeleteBulkAction::make(),
+        ];
+    }
 }

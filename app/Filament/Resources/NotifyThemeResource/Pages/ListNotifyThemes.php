@@ -8,6 +8,7 @@ use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords\Tab;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
@@ -43,7 +44,7 @@ class ListNotifyThemes extends XotBaseListRecords
         ];
     }
 
-    public function getListTableFilters(): array
+    public function getTableFilters(): array
     {
         return [
             SelectFilter::make('lang')
@@ -61,14 +62,15 @@ class ListNotifyThemes extends XotBaseListRecords
         ];
     }
 
-    public function getListTableActions(): array
+    public function getTableActions(): array
     {
         return [
+            ViewAction::make(),
             EditAction::make(),
         ];
     }
 
-    public function getListTableBulkActions(): array
+    public function getTableBulkActions(): array
     {
         return [
             DeleteBulkAction::make(),
