@@ -10,12 +10,5 @@ class ViewNotification extends XotBaseViewRecord
 {
     protected static string $resource = NotificationResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\EditAction::make(),
-            Actions\DeleteAction::make()
-                ->action(fn () => $this->record->softDelete()),
-        ];
-    }
+   
 }
