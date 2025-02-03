@@ -10,7 +10,6 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Table;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
 use Modules\Notify\Models\NotifyTheme;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
@@ -19,50 +18,61 @@ class ListNotifyThemes extends XotBaseListRecords
 {
     protected static string $resource = NotifyThemeResource::class;
 
-    public function table(Table $table): Table
+    public function getListTableColumns(): array
     {
-        return $table
-            ->columns([
-                TextColumn::make('id')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('lang')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('type')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('subject')
-                    ->sortable()
-                    ->searchable()
-                    ->limit(50),
-                TextColumn::make('theme')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable(),
-            ])
-            ->filters([
-                SelectFilter::make('lang')
-                    ->options(NotifyThemeResource::fieldOptions('lang')),
-                SelectFilter::make('type')
-                    ->options(NotifyThemeResource::fieldOptions('type')),
-                SelectFilter::make('theme')
-                    ->options([
-                        'empty' => 'empty',
-                        'ark' => 'ark',
-                        'minty' => 'minty',
-                        'sunny' => 'sunny',
-                        'widgets' => 'widgets',
-                    ]),
-            ])
-            ->actions([
-                EditAction::make(),
-            ])
-            ->bulkActions([
-                DeleteBulkAction::make(),
-            ]);
+        return [
+            TextColumn::make('id')
+                ->sortable()
+                ->searchable(),
+            TextColumn::make('lang')
+                ->sortable()
+                ->searchable(),
+            TextColumn::make('type')
+                ->sortable()
+                ->searchable(),
+            TextColumn::make('subject')
+                ->sortable()
+                ->searchable()
+                ->limit(50),
+            TextColumn::make('theme')
+                ->sortable()
+                ->searchable(),
+            TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable(),
+        ];
+    }
+
+    public function getListTableFilters(): array
+    {
+        return [
+            SelectFilter::make('lang')
+                ->options(NotifyThemeResource::fieldOptions('lang')),
+            SelectFilter::make('type')
+                ->options(NotifyThemeResource::fieldOptions('type')),
+            SelectFilter::make('theme')
+                ->options([
+                    'empty' => 'empty',
+                    'ark' => 'ark',
+                    'minty' => 'minty',
+                    'sunny' => 'sunny',
+                    'widgets' => 'widgets',
+                ]),
+        ];
+    }
+
+    public function getListTableActions(): array
+    {
+        return [
+            EditAction::make(),
+        ];
+    }
+
+    public function getListTableBulkActions(): array
+    {
+        return [
+            DeleteBulkAction::make(),
+        ];
     }
 
     protected function getHeaderActions(): array
