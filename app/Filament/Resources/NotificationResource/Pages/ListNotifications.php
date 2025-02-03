@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Notify\Filament\Resources\NotificationResource\Pages;
 
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\NotificationResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
@@ -38,7 +40,6 @@ class ListNotifications extends XotBaseListRecords
                 ->sortable(),
         ];
     }
-<<<<<<< HEAD
 
     public function getTableFilters(): array
     {
@@ -67,6 +68,4 @@ class ListNotifications extends XotBaseListRecords
             \Filament\Tables\Actions\DeleteBulkAction::make(),
         ];
     }
-=======
->>>>>>> origin/dev
 }

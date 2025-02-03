@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\ContactResource\Pages;
 
-<<<<<<< HEAD
 use Filament\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
-=======
->>>>>>> origin/dev
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\ContactResource;
@@ -48,7 +45,6 @@ class ListContacts extends XotBaseListRecords
                 ->sortable(),
         ];
     }
-<<<<<<< HEAD
 
     public function getTableFilters(): array
     {
@@ -83,6 +79,4 @@ class ListContacts extends XotBaseListRecords
             CreateAction::make(),
         ];
     }
-=======
->>>>>>> origin/dev
 }
