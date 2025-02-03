@@ -4,17 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources;
 
-use Filament\Forms\Form;
-use Modules\Notify\Filament\Resources\ContactResource\Pages\CreateContact;
-// use Modules\Notify\Filament\Resources\ContactResource\RelationManagers;
-use Modules\Notify\Filament\Resources\ContactResource\Pages\EditContact;
-// use Filament\Forms;
-use Modules\Notify\Filament\Resources\ContactResource\Pages\ListContacts;
+use Filament\Forms;
 use Modules\Notify\Models\Contact;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-
-// use Illuminate\Database\Eloquent\Builder;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends XotBaseResource
 {
@@ -22,28 +14,20 @@ class ContactResource extends XotBaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema(
-                [
-                ]
-            );
-    }
-
-    public static function getRelations(): array
+    public static function getFormSchema(): array
     {
         return [
-            // RelationManagers
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => ListContacts::route('/'),
-            'create' => CreateContact::route('/create'),
-            'edit' => EditContact::route('/{record}/edit'),
+            Forms\Components\TextInput::make('name')
+                ->label('Contact Name')
+                ->required(),
+            Forms\Components\TextInput::make('email')
+                ->label('Email')
+                ->email()
+                ->required(),
+            Forms\Components\TextInput::make('phone')
+                ->label('Phone Number')
+                ->tel()
+                ->nullable(),
         ];
     }
 }
