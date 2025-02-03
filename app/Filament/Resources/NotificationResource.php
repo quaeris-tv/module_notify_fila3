@@ -15,8 +15,6 @@ class NotificationResource extends XotBaseResource
 {
     protected static ?string $model = Notification::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-bell';
-
     public static function getFormSchema(): array
     {
         return [
@@ -43,10 +41,5 @@ class NotificationResource extends XotBaseResource
             'index' => Pages\ListNotifications::route('/'),
             'view' => Pages\ViewNotification::route('/{record}'),
         ];
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('System');
     }
 }
