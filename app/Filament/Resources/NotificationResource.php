@@ -2,16 +2,11 @@
 
 namespace Modules\Notify\Filament\Resources;
 
-use Filament\Forms\Form;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\KeyValue;
-use Modules\Notify\Filament\Resources\NotificationResource\Pages\CreateNotification;
-use Modules\Notify\Filament\Resources\NotificationResource\Pages\EditNotification;
-use Modules\Notify\Filament\Resources\NotificationResource\Pages\ListNotifications;
-use Modules\Notify\Models\Notification;
+use Filament\Forms\Components\TextInput;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages;
+use Modules\Notify\Models\Notification;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class NotificationResource extends XotBaseResource
@@ -26,33 +21,33 @@ class NotificationResource extends XotBaseResource
             'type' => TextInput::make('type')
                 ->required()
                 ->label('Notification Type'),
-            
+
             'notifiable_type' => TextInput::make('notifiable_type')
                 ->required()
                 ->label('Notifiable Type'),
-            
+
             'notifiable_id' => TextInput::make('notifiable_id')
                 ->required()
                 ->numeric()
                 ->label('Notifiable ID'),
-            
+
             'data' => KeyValue::make('data')
                 ->label('Notification Data')
                 ->keyLabel('Key')
                 ->valueLabel('Value')
                 ->columnSpanFull(),
-            
+
             'read_at' => DateTimePicker::make('read_at')
                 ->label('Read At')
                 ->nullable(),
-            
+
             'created_by' => TextInput::make('created_by')
                 ->label('Created By')
                 ->disabled(),
-            
+
             'updated_by' => TextInput::make('updated_by')
                 ->label('Updated By')
-                ->disabled()
+                ->disabled(),
         ];
     }
 

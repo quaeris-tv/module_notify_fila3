@@ -19,4 +19,3 @@ class NotificationFactory extends Factory
         return [];
     }
 }
-
