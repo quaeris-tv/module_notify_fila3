@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Modules\Notify\Filament\Resources;
 
 use Filament\Forms\Form;
-use Modules\Notify\Filament\Resources\ContactResource\Pages\CreateContact;
-use Modules\Notify\Filament\Resources\ContactResource\Pages\EditContact;
-use Modules\Notify\Filament\Resources\ContactResource\Pages\ListContacts;
 use Modules\Notify\Models\Contact;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
@@ -21,7 +18,7 @@ class ContactResource extends XotBaseResource
     {
         return [
             // Form fields here
-    
+
             Forms\Components\TextInput::make('name')
                 ->label('Contact Name')
                 ->required(),

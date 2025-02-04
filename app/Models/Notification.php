@@ -5,8 +5,6 @@ namespace Modules\Notify\Models;
 use Modules\Xot\Models\BaseModel;
 
 /**
- * 
- *
  * @property string $id
  * @property string $type
  * @property string $notifiable_type
@@ -21,6 +19,7 @@ use Modules\Xot\Models\BaseModel;
  * @property string|null $deleted_by
  * @property-read \Modules\Broker\Models\Profile|null $creator
  * @property-read \Modules\Broker\Models\Profile|null $updater
+ *
  * @method static \Modules\Notify\Database\Factories\NotificationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification newQuery()
@@ -37,6 +36,7 @@ use Modules\Xot\Models\BaseModel;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Notification whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class Notification extends BaseModel
