@@ -7,6 +7,7 @@ namespace Modules\Notify\Filament\Resources\ContactResource\Pages;
 use Filament\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\ContactResource;
@@ -45,5 +46,37 @@ class ListContacts extends XotBaseListRecords
         ];
     }
 
-    
+    public function getTableFilters(): array
+    {
+        return [
+            \Filament\Tables\Filters\Filter::make('is_read')
+                ->query(fn ($query) => $query->where('is_read', true))
+                ->label('Read'),
+            \Filament\Tables\Filters\Filter::make('is_unread')
+                ->query(fn ($query) => $query->where('is_read', false))
+                ->label('Unread'),
+        ];
+    }
+
+    public function getTableActions(): array
+    {
+        return [
+            ViewAction::make(),
+            EditAction::make(),
+        ];
+    }
+
+    public function getTableBulkActions(): array
+    {
+        return [
+            DeleteBulkAction::make(),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
 }
