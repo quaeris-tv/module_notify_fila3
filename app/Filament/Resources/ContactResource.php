@@ -6,15 +6,10 @@ namespace Modules\Notify\Filament\Resources;
 
 use Filament\Forms\Form;
 use Modules\Notify\Filament\Resources\ContactResource\Pages\CreateContact;
-// use Modules\Notify\Filament\Resources\ContactResource\RelationManagers;
 use Modules\Notify\Filament\Resources\ContactResource\Pages\EditContact;
-// use Filament\Forms;
 use Modules\Notify\Filament\Resources\ContactResource\Pages\ListContacts;
 use Modules\Notify\Models\Contact;
 use Modules\Xot\Filament\Resources\XotBaseResource;
-
-// use Illuminate\Database\Eloquent\Builder;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends XotBaseResource
 {
@@ -22,13 +17,11 @@ class ContactResource extends XotBaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function getFormSchema(): array
     {
-        return $form
-            ->schema(
-                [
-                ]
-            );
+        return [
+            // Form fields here
+        ];
     }
 
     public static function getRelations(): array
