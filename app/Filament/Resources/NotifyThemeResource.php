@@ -30,11 +30,9 @@ class NotifyThemeResource extends XotBaseResource
 
     protected static ?string $navigationIcon = 'heroicon-o-bell';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema(
-                [
+    public static function getFormSchema(): array
+{
+    return [
                     Select::make('lang')->options(self::fieldOptions('lang')),
                     Select::make('type')->options(self::fieldOptions('type')),
                     Select::make('post_type')->options(self::fieldOptions('post_type')),
