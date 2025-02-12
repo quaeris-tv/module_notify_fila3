@@ -8,7 +8,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use Modules\Notify\Filament\Resources\ContactResource;
 
-class EditContact extends EditRecord
+class EditContact extends \Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord
 {
     protected static string $resource = ContactResource::class;
 
