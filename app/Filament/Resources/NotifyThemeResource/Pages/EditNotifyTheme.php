@@ -8,7 +8,7 @@ use Filament\Pages\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
 
-class EditNotifyTheme extends EditRecord
+class EditNotifyTheme extends \Modules\Xot\Filament\Resources\Pages\XotBaseEditRecord
 {
     protected static string $resource = NotifyThemeResource::class;
 
