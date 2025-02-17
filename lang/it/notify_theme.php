@@ -12,7 +12,7 @@
       'name' => 'Admin',
     ),
     'label' => 'notify theme',
-    'sort' => 94,
+    'sort' => 32,
     'icon' => 'notify theme.navigation',
   ),
   'fields' => 

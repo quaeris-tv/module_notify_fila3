@@ -12,7 +12,7 @@
       'name' => 'Admin',
     ),
     'label' => 'contact',
-    'sort' => 12,
+    'sort' => 20,
     'icon' => 'contact.navigation',
   ),
   'fields' => 
