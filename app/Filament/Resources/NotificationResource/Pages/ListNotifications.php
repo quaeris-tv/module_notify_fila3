@@ -10,7 +10,10 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\NotificationResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+<<<<<<< HEAD
+=======
 use Filament\Tables;
+>>>>>>> fec3c4996a4c64b9888772002ccf5593b2cd71a7
 
 class ListNotifications extends XotBaseListRecords
 {
@@ -45,6 +48,32 @@ class ListNotifications extends XotBaseListRecords
     public function getTableFilters(): array
     {
         return [
+<<<<<<< HEAD
+            \Filament\Tables\Filters\SelectFilter::make('type')
+                ->options(fn () => \Modules\Notify\Models\Notification::distinct()->pluck('type', 'type')->toArray()),
+            \Filament\Tables\Filters\Filter::make('read')
+                ->query(fn ($query) => $query->whereNotNull('read_at')),
+            \Filament\Tables\Filters\Filter::make('unread')
+                ->query(fn ($query) => $query->whereNull('read_at')),
+        ];
+    }
+
+    public function getTableActions(): array
+    {
+        return [
+            ViewAction::make(),
+            EditAction::make(),
+            DeleteAction::make(),
+        ];
+    }
+
+    public function getTableBulkActions(): array
+    {
+        return [
+            \Filament\Tables\Actions\DeleteBulkAction::make(),
+        ];
+    }
+=======
             'read' => Tables\Filters\Filter::make('is_read')
                 ->query(fn ($query) => $query->where('read_at', '!=', null))
                 ->label('Read'),
@@ -63,4 +92,5 @@ class ListNotifications extends XotBaseListRecords
     }
 
   
+>>>>>>> fec3c4996a4c64b9888772002ccf5593b2cd71a7
 }

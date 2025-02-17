@@ -12,7 +12,10 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\ContactResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+<<<<<<< HEAD
+=======
 use Filament\Tables;
+>>>>>>> fec3c4996a4c64b9888772002ccf5593b2cd71a7
 
 class ListContacts extends XotBaseListRecords
 {
@@ -50,6 +53,38 @@ class ListContacts extends XotBaseListRecords
     public function getTableFilters(): array
     {
         return [
+<<<<<<< HEAD
+            \Filament\Tables\Filters\Filter::make('is_read')
+                ->query(fn ($query) => $query->where('is_read', true))
+                ->label('Read'),
+            \Filament\Tables\Filters\Filter::make('is_unread')
+                ->query(fn ($query) => $query->where('is_read', false))
+                ->label('Unread'),
+        ];
+    }
+
+    public function getTableActions(): array
+    {
+        return [
+            ViewAction::make(),
+            EditAction::make(),
+        ];
+    }
+
+    public function getTableBulkActions(): array
+    {
+        return [
+            DeleteBulkAction::make(),
+        ];
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
+=======
             'active' => Tables\Filters\Filter::make('active')
                 ->query(fn ($query) => $query->where('active', true)),
             'inactive' => Tables\Filters\Filter::make('inactive')
@@ -60,4 +95,5 @@ class ListContacts extends XotBaseListRecords
     
 
    
+>>>>>>> fec3c4996a4c64b9888772002ccf5593b2cd71a7
 }
