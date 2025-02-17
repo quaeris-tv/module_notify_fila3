@@ -1,51 +1,65 @@
-<?php return array (
-  'resource' => 
-  array (
-    'name' => 'notification',
-  ),
-  'navigation' => 
-  array (
-    'name' => 'notification',
-    'plural' => 'notifications',
-    'group' => 
-    array (
-      'name' => 'Admin',
+<?php return array (
+    'navigation' => array (
+        'name' => 'Notifiche',
+        'plural' => 'Notifiche',
+        'group' => array (
+            'name' => 'Notifiche',
+            'description' => 'Gestione delle notifiche e comunicazioni',
+        ),
+        'label' => 'Notifiche',
+        'sort' => 50,
+        'icon' => 'notify-notification-animated',
     ),
-    'label' => 'notification',
-    'sort' => 13,
-    'icon' => 'notification.navigation',
-  ),
-  'fields' => 
-  array (
-    'name' => 'Nome Area',
-    'parent' => 'Settore di appartenenza',
-    'parent.name' => 'Settore di appartenenza',
-    'parent_name' => 'Settore di appartenenza',
-    'assets' => 'Quantità di asset',
-    'type' => 
-    array (
-      'name' => 'Tipo',
+    'fields' => array (
+        'title' => 'Titolo',
+        'message' => 'Messaggio',
+        'type' => array (
+            'label' => 'Tipo',
+            'system' => 'Sistema',
+            'alert' => 'Avviso',
+            'info' => 'Informazione',
+            'success' => 'Successo',
+            'warning' => 'Attenzione',
+            'error' => 'Errore',
+        ),
+        'status' => array (
+            'label' => 'Stato',
+            'unread' => 'Non letta',
+            'read' => 'Letta',
+            'archived' => 'Archiviata',
+        ),
+        'recipient' => 'Destinatario',
+        'sent_at' => 'Inviata il',
+        'read_at' => 'Letta il',
+        'archived_at' => 'Archiviata il',
     ),
-  ),
-  'actions' => 
-  array (
-    'import' => 
-    array (
-      'name' => 'Importa da file',
-      'fields' => 
-      array (
-        'import_file' => 'Seleziona un file XLS o CSV da caricare',
-      ),
+    'actions' => array (
+        'mark_as_read' => 'Segna come letta',
+        'mark_as_unread' => 'Segna come non letta',
+        'archive' => 'Archivia',
+        'unarchive' => 'Ripristina',
+        'delete' => 'Elimina',
     ),
-    'export' => 
-    array (
-      'name' => 'Esporta dati',
-      'filename_prefix' => 'Aree al',
-      'columns' => 
-      array (
-        'name' => 'Nome area',
-        'parent_name' => 'Nome area livello superiore',
-      ),
+    'messages' => array (
+        'no_notifications' => 'Nessuna notifica',
+        'mark_all_read' => 'Segna tutte come lette',
+        'archive_all' => 'Archivia tutte',
+        'delete_all' => 'Elimina tutte',
     ),
-  ),
-);
+    'filters' => array (
+        'all' => 'Tutte',
+        'unread' => 'Non lette',
+        'read' => 'Lette',
+        'archived' => 'Archiviate',
+        'type' => 'Tipo',
+        'date' => 'Data',
+    ),
+    'badges' => array (
+        'unread' => 'Non letta',
+        'priority' => array (
+            'high' => 'Alta priorità',
+            'medium' => 'Media priorità',
+            'low' => 'Bassa priorità',
+        ),
+    ),
+);
