@@ -192,4 +192,4 @@ return [
             'tooltip' => 'Filtra per data ultima notifica',
         ],
     ],
-]; 
+];
