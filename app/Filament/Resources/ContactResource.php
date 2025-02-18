@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Notify\Filament\Resources;
 
 use Filament\Forms\Form;
-use Filament\Forms;
 use Modules\Notify\Models\Contact;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
@@ -18,12 +17,17 @@ class ContactResource extends XotBaseResource
     public static function getFormSchema(): array
     {
         return [
-            'name'=>Forms\Components\TextInput::make('name')
+            // Form fields here
+
+            Forms\Components\TextInput::make('name')
+                ->label('Contact Name')
                 ->required(),
-            'email'=>Forms\Components\TextInput::make('email')
+            Forms\Components\TextInput::make('email')
+                ->label('Email')
                 ->email()
                 ->required(),
-            'phone'=>Forms\Components\TextInput::make('phone')
+            Forms\Components\TextInput::make('phone')
+                ->label('Phone Number')
                 ->tel()
                 ->nullable(),
         ];
