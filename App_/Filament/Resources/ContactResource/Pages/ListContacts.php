@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\ContactResource\Pages;
 
-use Filament\Actions\CreateAction;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ViewAction;
+use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\ContactResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Filament\Tables;
 
 class ListContacts extends XotBaseListRecords
 {
@@ -56,8 +52,4 @@ class ListContacts extends XotBaseListRecords
                 ->query(fn ($query) => $query->where('active', false)),
         ];
     }
-
-    
-
-   
 }
