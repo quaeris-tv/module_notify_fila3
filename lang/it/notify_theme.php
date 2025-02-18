@@ -1,4 +1,5 @@
-<?php return array (
+<?php 
+return array (
   'resource' => 
   array (
     'name' => 'notify_themes',
@@ -13,7 +14,7 @@
     ),
     'label' => 'notify theme',
     'sort' => 32,
-    'icon' => 'notify theme.navigation',
+    'icon' => 'notify-theme',
   ),
   'fields' => 
   array (
@@ -50,4 +51,4 @@
     'create' => 'Aggiungi',
     'edit' => 'Modifica',
   ),
-);
+);
