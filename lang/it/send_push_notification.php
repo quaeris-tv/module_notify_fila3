@@ -2,56 +2,50 @@
 
 return [
     'resource' => [
-        'name' => 'Send',
+        'name' => 'Invio Notifica Push',
     ],
     'navigation' => [
-        'name' => 'firebase notification',
-        'plural' => 'firebase notification',
+        'name' => 'Invio Notifica Push',
+        'plural' => 'Invio Notifiche Push',
         'group' => [
-            'name' => 'Invia',
+            'name' => 'Sistema',
+            'description' => 'Funzionalità per l\'invio di notifiche push tramite Firebase',
         ],
+        'label' => 'Invio Notifiche Push',
+        'icon' => 'notify-push-animated',
+        'sort' => 51,
     ],
     'fields' => [
-        'name' => [
-            'label' => 'Nome Area',
-        ],
-        'parent' => 'Settore di appartenenza',
-        'parent.name' => 'Settore di appartenenza',
-        'parent_name' => 'Settore di appartenenza',
-        'assets' => 'Quantità di asset',
-        'deviceToken' => [
-            'label' => 'deviceToken',
+        'device_token' => [
+            'label' => 'Token Dispositivo',
         ],
         'type' => [
-            'label' => 'type',
+            'label' => 'Tipo',
+            'options' => [
+                'notification' => 'Notifica',
+                'data' => 'Dati',
+                'both' => 'Entrambi',
+            ],
         ],
         'title' => [
-            'label' => 'title',
+            'label' => 'Titolo',
         ],
         'body' => [
-            'label' => 'body',
+            'label' => 'Contenuto',
         ],
         'data' => [
-            'label' => 'data',
-        ],
-        'value' => [
-            'label' => 'value',
+            'label' => 'Dati Aggiuntivi',
+            'description' => 'Dati in formato JSON da inviare con la notifica',
         ],
     ],
     'actions' => [
-        'import' => [
-            'name' => 'Importa da file',
-            'fields' => [
-                'import_file' => 'Seleziona un file XLS o CSV da caricare',
-            ],
+        'send' => [
+            'label' => 'Invia Notifica',
+            'success' => 'Notifica push inviata con successo',
+            'error' => 'Errore durante l\'invio della notifica push',
         ],
-        'export' => [
-            'name' => 'Esporta dati',
-            'filename_prefix' => 'Aree al',
-            'columns' => [
-                'name' => 'Nome area',
-                'parent_name' => 'Nome area livello superiore',
-            ],
+        'preview' => [
+            'label' => 'Anteprima',
         ],
     ],
 ];
