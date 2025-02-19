@@ -11,23 +11,21 @@ return [
     'fields' => [
         'title' => 'Titolo',
         'message' => 'Messaggio',
-        'type' => 
-        array (
-          'label' => 'Tipo',
-          'system' => 'Sistema',
-          'alert' => 'Avviso',
-          'info' => 'Informazione',
-          'success' => 'Successo',
-          'warning' => 'Attenzione',
-          'error' => 'Errore',
-        ),
-        'status' => 
-        array (
-          'label' => 'Stato',
-          'unread' => 'Non letta',
-          'read' => 'Letta',
-          'archived' => 'Archiviata',
-        ),
+        'type' => [
+            'label' => 'Tipo',
+            'system' => 'Sistema',
+            'alert' => 'Avviso',
+            'info' => 'Informazione',
+            'success' => 'Successo',
+            'warning' => 'Attenzione',
+            'error' => 'Errore',
+        ],
+        'status' => [
+            'label' => 'Stato',
+            'unread' => 'Non letta',
+            'read' => 'Letta',
+            'archived' => 'Archiviata',
+        ],
         'recipient' => 'Destinatario',
         'sent_at' => 'Inviata il',
         'read_at' => 'Letta il',
@@ -154,23 +152,20 @@ return [
             'message' => 'Notifica programmata per il :date alle :time',
         ],
     ],
-    'filters' => 
-    array (
-      'all' => 'Tutte',
-      'unread' => 'Non lette',
-      'read' => 'Lette',
-      'archived' => 'Archiviate',
-      'type' => 'Tipo',
-      'date' => 'Data',
-    ),
-    'badges' => 
-    array (
-      'unread' => 'Non letta',
-      'priority' => 
-      array (
-        'high' => 'Alta priorità',
-        'medium' => 'Media priorità',
-        'low' => 'Bassa priorità',
-      ),
-    ),
+    'filters' => [
+        'all' => 'Tutte',
+        'unread' => 'Non lette',
+        'read' => 'Lette',
+        'archived' => 'Archiviate',
+        'type' => 'Tipo',
+        'date' => 'Data',
+    ],
+    'badges' => [
+        'unread' => 'Non letta',
+        'priority' => [
+            'high' => 'Alta priorità',
+            'medium' => 'Media priorità',
+            'low' => 'Bassa priorità',
+        ],
+    ],
 ];
