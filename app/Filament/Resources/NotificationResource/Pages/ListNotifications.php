@@ -8,7 +8,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\NotificationResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Filament\Tables;
 
 class ListNotifications extends XotBaseListRecords
 {
