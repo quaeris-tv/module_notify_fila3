@@ -2,19 +2,10 @@
 
 namespace Modules\Notify\Filament\Resources;
 
-<<<<<<< HEAD
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
 use Modules\Notify\Filament\Resources\NotificationResource\Pages;
-=======
-use Filament\Forms\Form;
-use Modules\Notify\Filament\Resources\NotificationResource\Pages\CreateNotification;
-// use Modules\Notify\Filament\Resources\NotificationResource\RelationManagers;
-use Modules\Notify\Filament\Resources\NotificationResource\Pages\EditNotification;
-// use Filament\Forms;
-use Modules\Notify\Filament\Resources\NotificationResource\Pages\ListNotifications;
->>>>>>> ea1c9cdf (up)
 use Modules\Notify\Models\Notification;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 

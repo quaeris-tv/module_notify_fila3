@@ -7,7 +7,6 @@ return [
     'navigation' => [
         'name' => 'contatto',
         'plural' => 'contatti',
-<<<<<<< HEAD
         'group' => 'Sistema',
         'label' => 'Contatto',
         'sort' => 49,
@@ -121,19 +120,6 @@ return [
             'label' => 'Ultima notifica',
             'tooltip' => 'Data e ora dell\'ultima notifica inviata',
         ],
-=======
-        'group' => [
-            'name' => 'Admin',
-        ],
-        'label' => 'contact',
-    ],
-    'fields' => [
-        'name' => 'Nome Area',
-        'parent' => 'Settore di appartenenza',
-        'parent.name' => 'Settore di appartenenza',
-        'parent_name' => 'Settore di appartenenza',
-        'assets' => 'Quantità di asset',
->>>>>>> ea1c9cdf (up)
     ],
     'actions' => [
         'import' => [
@@ -150,7 +136,6 @@ return [
                 'parent_name' => 'Nome area livello superiore',
             ],
         ],
-<<<<<<< HEAD
         'test_notification' => [
             'label' => 'Invia test',
             'tooltip' => 'Invia una notifica di test',
@@ -199,7 +184,5 @@ return [
             'title' => 'Errore Verifica',
             'message' => 'Impossibile verificare il contatto: :error',
         ],
-=======
->>>>>>> ea1c9cdf (up)
     ],
 ];

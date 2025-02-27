@@ -4,21 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\NotificationResource\Pages;
 
-<<<<<<< HEAD
 use Filament\Tables\Actions\DeleteAction;
-=======
-use Filament\Actions\CreateAction;
-use Filament\Tables\Actions\DeleteBulkAction;
->>>>>>> ea1c9cdf (up)
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\NotificationResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-<<<<<<< HEAD
 use Filament\Tables;
-=======
->>>>>>> ea1c9cdf (up)
 
 class ListNotifications extends XotBaseListRecords
 {
@@ -70,5 +62,5 @@ class ListNotifications extends XotBaseListRecords
         ];
     }
 
-  
+
 }
