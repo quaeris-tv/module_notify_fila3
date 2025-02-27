@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Notify\Filament\Resources\NotifyThemeResource\Pages;
 
+<<<<<<< HEAD
 use Filament\Tables\Columns;
 use Filament\Tables\Filters;
+=======
+use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+>>>>>>> ea1c9cdf (up)
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
@@ -13,7 +19,30 @@ class ListNotifyThemes extends XotBaseListRecords
 {
     protected static string $resource = NotifyThemeResource::class;
 
+<<<<<<< HEAD
     public function getListTableColumns(): array
+=======
+    // protected function getHeaderActions(): array
+    // {
+    //     return [
+    //         CreateAction::make(),
+    //     ];
+    // }
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->columns($this->getTableColumns())
+            ->filters($this->getTableFilters())
+            ->actions($this->getTableActions())
+            ->bulkActions($this->getTableBulkActions())
+            ->headerActions($this->getTableHeaderActions());
+        // ->defaultSort('pos', 'asc')
+        // ->reorderable('pos')
+    }
+
+    public function getTableColumns(): array
+>>>>>>> ea1c9cdf (up)
     {
         return [
             'id' => Columns\TextColumn::make('id')

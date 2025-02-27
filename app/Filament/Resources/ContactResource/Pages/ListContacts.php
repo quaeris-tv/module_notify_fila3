@@ -7,12 +7,18 @@ namespace Modules\Notify\Filament\Resources\ContactResource\Pages;
 use Filament\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+<<<<<<< HEAD
 use Filament\Tables\Actions\ViewAction;
+=======
+>>>>>>> ea1c9cdf (up)
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Modules\Notify\Filament\Resources\ContactResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+<<<<<<< HEAD
 use Filament\Tables;
+=======
+>>>>>>> ea1c9cdf (up)
 
 class ListContacts extends XotBaseListRecords
 {
