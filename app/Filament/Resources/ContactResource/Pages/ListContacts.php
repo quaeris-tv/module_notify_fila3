@@ -47,6 +47,7 @@ class ListContacts extends XotBaseListRecords
         ];
     }
 
+<<<<<<< HEAD
     public function getTableFilters(): array
     {
         return [
@@ -60,4 +61,7 @@ class ListContacts extends XotBaseListRecords
 
 
 
+=======
+    
+>>>>>>> a680ce68 (up)
 }
