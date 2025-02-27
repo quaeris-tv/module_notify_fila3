@@ -30,7 +30,6 @@ class NotificationResource extends XotBaseResource
                 ->required()
                 ->numeric()
                 ->label('Notifiable ID'),
-
             'data' => KeyValue::make('data')
                 ->label('Notification Data')
                 ->keyLabel('Key')

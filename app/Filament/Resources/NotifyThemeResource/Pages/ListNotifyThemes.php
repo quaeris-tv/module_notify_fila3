@@ -8,6 +8,7 @@ use Filament\Tables\Columns;
 use Filament\Tables\Filters;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
+use Modules\Notify\Filament\Resources\NotifyThemeResource;
 
 class ListNotifyThemes extends XotBaseListRecords
 {
@@ -52,4 +53,18 @@ class ListNotifyThemes extends XotBaseListRecords
                 ->options(NotifyThemeResource::fieldOptions('type')),
         ];
     }
+
+    public function getTableFilters(): array
+    {
+        return [
+            'lang' => Filters\SelectFilter::make('lang')
+                ->options(NotifyThemeResource::fieldOptions('lang')),
+            'post_type' => Filters\SelectFilter::make('post_type')
+                ->options(NotifyThemeResource::fieldOptions('post_type')),
+            'type' => Filters\SelectFilter::make('type')
+                ->options(NotifyThemeResource::fieldOptions('type'))
+        ];
+    }
+
+   
 }
