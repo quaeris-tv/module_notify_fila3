@@ -9,10 +9,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-<<<<<<< HEAD
-=======
-use Filament\Forms\Form;
->>>>>>> b69ee131 (up)
 use Modules\Notify\Filament\Resources\NotifyThemeResource\Pages\CreateNotifyTheme;
 use Modules\Notify\Filament\Resources\NotifyThemeResource\Pages\EditNotifyTheme;
 use Modules\Notify\Filament\Resources\NotifyThemeResource\Pages\ListNotifyThemes;
@@ -59,11 +55,7 @@ class NotifyThemeResource extends XotBaseResource
             'body' => Textarea::make('body')
                 ->columnSpanFull(),
             'body_html' => RichEditor::make('body_html')
-<<<<<<< HEAD
                 ->columnSpanFull(),
-=======
-                ->columnSpanFull()
->>>>>>> b69ee131 (up)
         ];
     }
 
