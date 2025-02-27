@@ -22,6 +22,95 @@ class NotifyThemeResource extends XotBaseResource
     protected static ?string $navigationIcon = 'heroicon-o-bell';
 
     public static function getFormSchema(): array
+<<<<<<< HEAD
+=======
+{
+    return [
+                    Select::make('lang')->options(self::fieldOptions('lang')),
+                    Select::make('type')->options(self::fieldOptions('type')),
+                    Select::make('post_type')->options(self::fieldOptions('post_type')),
+                    TextInput::make('post_id'),
+                    TextInput::make('subject'),
+                    TextInput::make('from'),
+                    TextInput::make('from_email'),
+                    SpatieMediaLibraryFileUpload::make('logo_src')
+                        ->enableOpen()
+                        ->enableDownload()
+                        ->columnSpanFull()
+                        ->disk('uploads')
+                        ->directory('photos')
+                        ->preserveFilenames(),
+                    TextInput::make('logo_width'),
+                    TextInput::make('logo_height'),
+                    // Forms\Components\TextInput::make('theme'),
+                    Select::make('theme')->options(
+                        [
+                            'empty' => 'empty',
+                            'ark' => 'ark',
+                            'minty' => 'minty',
+                            'sunny' => 'sunny',
+                            'widgets' => 'widgets',
+                        ]
+                    )
+                        ->default('empty'),
+                    Textarea::make('body')->columnSpanFull(),
+                    RichEditor::make('body_html')->columnSpanFull(),
+                    // TinyEditor::make('body_html')->columnSpanFull(),
+                ]
+            );
+    }
+
+    public static function fieldOptions(string $field): array
+    {
+        return NotifyTheme::select($field)
+            ->where($field, '!=', null)
+            ->distinct()
+            ->pluck($field, $field)
+            ->toArray();
+    }
+
+    public static function tableOLD(Table $table): Table
+    {
+        return $table
+            ->columns(
+                [
+                    'id' => TextColumn::make('id')->sortable(),
+                    'lang' => TextColumn::make('lang')->sortable(),
+                    'type' => TextColumn::make('type')->sortable(),
+                    'post_id' => TextColumn::make('post_id')->sortable(),
+                    'post_type' => TextColumn::make('post_type')->sortable(),
+                    'logo_src' => TextColumn::make('logo_src')->sortable(),
+                ]
+            )
+            ->filters(
+                [
+                    SelectFilter::make('lang')
+                        ->options(self::fieldOptions('lang')),
+                    SelectFilter::make('post_type')
+                        ->options(self::fieldOptions('post_type')),
+                    SelectFilter::make('type')
+                        ->options(self::fieldOptions('type')),
+                ]
+            )
+            ->actions(
+                [
+                    EditAction::make(),
+                ]
+            )
+            ->bulkActions(
+                [
+                    DeleteBulkAction::make(),
+                ]
+            )
+            ->headerActions(
+                [
+                    CreateAction::make(),
+                ]
+            );
+    }
+
+    public static function getRelations(): array
+>>>>>>> 962ac989 (Auto update submodule)
     {
         return [
             'lang' => Select::make('lang')

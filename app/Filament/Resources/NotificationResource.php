@@ -18,6 +18,7 @@ class NotificationResource extends XotBaseResource
     public static function getFormSchema(): array
     {
         return [
+<<<<<<< HEAD
             'type' => TextInput::make('type')
                 ->required()
                 ->label('Notification Type'),
@@ -48,6 +49,9 @@ class NotificationResource extends XotBaseResource
             'updated_by' => TextInput::make('updated_by')
                 ->label('Updated By')
                 ->disabled(),
+=======
+            // Add your form fields here
+>>>>>>> 962ac989 (Auto update submodule)
         ];
     }
 
