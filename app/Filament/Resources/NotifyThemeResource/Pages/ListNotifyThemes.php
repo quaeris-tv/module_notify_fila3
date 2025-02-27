@@ -8,7 +8,6 @@ use Filament\Tables\Columns;
 use Filament\Tables\Filters;
 use Modules\Notify\Filament\Resources\NotifyThemeResource;
 use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
-use Modules\Notify\Filament\Resources\NotifyThemeResource;
 
 class ListNotifyThemes extends XotBaseListRecords
 {
@@ -30,27 +29,13 @@ class ListNotifyThemes extends XotBaseListRecords
             'logo_src' => Columns\TextColumn::make('logo_src')
                 ->sortable(),
             'created_at' => Columns\TextColumn::make('created_at')
-                ->label('Data Creazione')
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
             'updated_at' => Columns\TextColumn::make('updated_at')
-                ->label('Ultima Modifica')
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
-        ];
-    }
-
-    public function getTableFilters(): array
-    {
-        return [
-            'lang' => Filters\SelectFilter::make('lang')
-                ->options(NotifyThemeResource::fieldOptions('lang')),
-            'post_type' => Filters\SelectFilter::make('post_type')
-                ->options(NotifyThemeResource::fieldOptions('post_type')),
-            'type' => Filters\SelectFilter::make('type')
-                ->options(NotifyThemeResource::fieldOptions('type')),
         ];
     }
 
@@ -65,6 +50,5 @@ class ListNotifyThemes extends XotBaseListRecords
                 ->options(NotifyThemeResource::fieldOptions('type'))
         ];
     }
-
    
 }
