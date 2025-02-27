@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 declare(strict_types=1);
 
 return [
@@ -18,3 +19,6 @@ return [
         'Modules\\Notify\\Providers\\NotifyServiceProvider',
     ],
 ];
+=======
+return [];
+>>>>>>> 05ab0cff (up)
