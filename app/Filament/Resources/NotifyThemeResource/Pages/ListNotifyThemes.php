@@ -47,8 +47,7 @@ class ListNotifyThemes extends XotBaseListRecords
             'post_type' => Filters\SelectFilter::make('post_type')
                 ->options(NotifyThemeResource::fieldOptions('post_type')),
             'type' => Filters\SelectFilter::make('type')
-                ->options(NotifyThemeResource::fieldOptions('type'))
+                ->options(NotifyThemeResource::fieldOptions('type')),
         ];
     }
-   
 }
