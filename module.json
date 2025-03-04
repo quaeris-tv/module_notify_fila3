@@ -2,7 +2,7 @@
     "name": "Notify",
     "alias": "notify",
     "description": "",
-    "keywords": [],
+    "keywords": ["LaraXot"],
     "priority": 0,
     "providers": [
         "Modules\\Notify\\Providers\\NotifyServiceProvider",

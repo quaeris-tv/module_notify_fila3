@@ -2,7 +2,8 @@
     "name": "laraxot/module_notify_fila3",
     "description": "notify module dedicated to managing notifications",
     "keywords": [
-        "laraxot",
+        "LaraXot",
+        "Xot",
         "laravel",
         "filament",
         "module_notify",
