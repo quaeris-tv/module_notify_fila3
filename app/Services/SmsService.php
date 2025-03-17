@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Modules\Notify\Services;
 
 use Illuminate\Support\Str;
+<<<<<<< HEAD
+=======
+use Webmozart\Assert\Assert;
+>>>>>>> 7e2cbbb12 (first)
 
 /**
  * Classe per l'invio di SMS.
@@ -17,7 +21,11 @@ class SmsService
     public ?string $from = null;
 
     public ?string $body = null;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7e2cbbb12 (first)
     /**
      * Variabili per il template SMS.
      *
@@ -44,6 +52,7 @@ class SmsService
         return self::$instance;
     }
 
+<<<<<<< HEAD
     public static function make(): self
     {
         return static::getInstance();
@@ -59,6 +68,13 @@ class SmsService
         return $this;
     }
 
+=======
+    /**
+     * Unisce le variabili con quelle esistenti.
+     *
+     * @param array<string, mixed> $vars
+     */
+>>>>>>> 7e2cbbb12 (first)
     public function mergeVars(array $vars): self
     {
         $this->vars = array_merge($this->vars, $vars);
@@ -72,6 +88,7 @@ class SmsService
     public function send(): self
     {
         $engineClassName = '\Modules\Notify\Services\SmsEngines\\'.Str::studly($this->driver).'Engine';
+<<<<<<< HEAD
 
         // Verifichiamo che la classe esista
         if (! class_exists($engineClassName)) {
@@ -119,6 +136,55 @@ class SmsService
                 $result = [];
             }
 
+=======
+        
+        // Verifichiamo che la classe esista
+        if (!class_exists($engineClassName)) {
+            throw new \RuntimeException("La classe del motore SMS {$engineClassName} non esiste");
+        }
+        
+        // Verifichiamo che la classe abbia il metodo make
+        if (!method_exists($engineClassName, 'make')) {
+            throw new \RuntimeException("La classe {$engineClassName} non implementa il metodo make()");
+        }
+        
+        // Creiamo l'istanza in modo sicuro
+        $instance = $engineClassName::make();
+        
+        // Verifichiamo che l'istanza sia un oggetto
+        if (!is_object($instance)) {
+            throw new \RuntimeException("Il metodo make() di {$engineClassName} non ha restituito un oggetto");
+        }
+        
+        // Verifichiamo che l'istanza abbia i metodi necessari
+        foreach (['setLocalVars', 'send', 'getVars'] as $method) {
+            if (!method_exists($instance, $method)) {
+                throw new \RuntimeException("L'istanza di {$engineClassName} non implementa il metodo {$method}()");
+            }
+        }
+        
+        // Utilizziamo reflection per chiamare i metodi in modo sicuro
+        try {
+            $reflectionClass = new \ReflectionClass($instance);
+            
+            // Chiamiamo setLocalVars
+            $setLocalVarsMethod = $reflectionClass->getMethod('setLocalVars');
+            $setLocalVarsMethod->invoke($instance, $this->vars);
+            
+            // Chiamiamo send
+            $sendMethod = $reflectionClass->getMethod('send');
+            $sendMethod->invoke($instance);
+            
+            // Chiamiamo getVars
+            $getVarsMethod = $reflectionClass->getMethod('getVars');
+            $result = $getVarsMethod->invoke($instance);
+            
+            // Verifichiamo che il risultato sia un array
+            if (!is_array($result)) {
+                $result = [];
+            }
+            
+>>>>>>> 7e2cbbb12 (first)
             // Convertiamo l'array in array<string, mixed>
             /** @var array<string, mixed> $typedResult */
             $typedResult = [];
@@ -127,10 +193,17 @@ class SmsService
                     $typedResult[$key] = $value;
                 }
             }
+<<<<<<< HEAD
 
             $this->mergeVars($typedResult);
         } catch (\ReflectionException $e) {
             throw new \RuntimeException('Errore durante la chiamata dei metodi: '.$e->getMessage());
+=======
+            
+            $this->mergeVars($typedResult);
+        } catch (\ReflectionException $e) {
+            throw new \RuntimeException("Errore durante la chiamata dei metodi: " . $e->getMessage());
+>>>>>>> 7e2cbbb12 (first)
         }
 
         return $this;
