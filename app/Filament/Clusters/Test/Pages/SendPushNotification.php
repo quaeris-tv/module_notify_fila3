@@ -171,26 +171,31 @@ class SendPushNotification extends Page implements HasForms
         $pushDataTemp = [];
         
         // Aggiungiamo i valori all'array solo se non sono vuoti
-        if ($type !== '') {
-            $pushDataTemp['type'] = $type;
-        }
-        if ($title !== '') {
-            $pushDataTemp['title'] = $title;
-        }
-        if ($body !== '') {
-            $pushDataTemp['body'] = $body;
-        }
-        if ($jsonData !== '') {
-            $pushDataTemp['data'] = $jsonData;
-        }
+        // PHPStan sa che queste stringhe non possono essere vuote a questo punto
+        $pushDataTemp['type'] = $type;
+        $pushDataTemp['title'] = $title;
+        $pushDataTemp['body'] = $body;
+        // Adding data field (we know jsonData can't be empty due to fallback to '{}' earlier)
+        $pushDataTemp['data'] = $jsonData;
         
-        // Verifichiamo che l'array non sia vuoto
-        if (empty($pushDataTemp)) {
+        // Verifichiamo che l'array contenga almeno un elemento
+        if (count($pushDataTemp) === 0) {
             $pushDataTemp['type'] = 'notification';
         }
         
         // Creiamo un MessageData object
-        $messageData = new \Kreait\Firebase\Messaging\MessageData($pushDataTemp);
+        // Convertiamo tutti i valori in stringa come richiesto da MessageData
+        $sanitizedData = [];
+        foreach ($pushDataTemp as $key => $value) {
+            // All keys are non-empty strings by this point
+            if (is_scalar($value) || is_null($value)) {
+                $sanitizedData[$key] = (string)$value;
+            } else {
+                // Handle non-scalar values (arrays, objects) by converting to JSON
+                $sanitizedData[$key] = (string)json_encode($value);
+            }
+        }
+        $messageData = \Kreait\Firebase\Messaging\MessageData::fromArray($sanitizedData);
 
         // Verifichiamo che deviceToken sia una stringa non vuota (per soddisfare il tipo non-empty-string)
         Assert::stringNotEmpty($deviceToken, 'Il token del dispositivo non può essere vuoto');
