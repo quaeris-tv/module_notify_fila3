@@ -145,52 +145,57 @@ class SendPushNotification extends Page implements HasForms
 
     public function sendNotification(): void
     {
-        $data = $this->notificationForm->getState();
-        $deviceToken = $data['deviceToken'] ?? '';
-
-        // Verifichiamo che deviceToken sia una stringa non vuota
-        if ($deviceToken === '') {
-            Notification::make()
-                ->danger()
-                ->title('Errore')
-                ->body('Token del dispositivo non valido')
-                ->send();
-            return;
+        // Prelevare i valori dal form di notifica
+        $notificationForm = $this->notificationForm->getState();
+        
+        // Convertiamo i valori in modo sicuro
+        /** @var array<string, mixed> $notificationForm */
+        $deviceToken = '';
+        if (isset($notificationForm['device_token']) && is_scalar($notificationForm['device_token'])) {
+            $deviceToken = (string)$notificationForm['device_token'];
         }
-
-        // Verifichiamo che i dati siano del tipo corretto
-        $type = $data['type'] ?? '';
-        $title = $data['title'] ?? '';
-        $body = $data['body'] ?? '';
-        $jsonData = isset($data['data']) ? json_encode($data['data']) : '{}';
         
-        // Verifichiamo che jsonData sia una stringa
-        $jsonData = $jsonData ?: '{}';
-        
-        // Creiamo un array con chiavi non vuote e valori stringa che implementano Stringable
-        $pushDataTemp = [];
-        
-        // Aggiungiamo i valori all'array solo se non sono vuoti
-        if ($type !== '') {
-            $pushDataTemp['type'] = $type;
+        $title = '';
+        if (isset($notificationForm['title']) && is_scalar($notificationForm['title'])) {
+            $title = (string)$notificationForm['title'];
         }
+        
+        $body = '';
+        if (isset($notificationForm['body']) && is_scalar($notificationForm['body'])) {
+            $body = (string)$notificationForm['body'];
+        }
+        
+        $type = 'notification';
+        if (isset($notificationForm['type']) && is_scalar($notificationForm['type'])) {
+            $type = (string)$notificationForm['type'];
+        }
+        
+        // Assicuriamoci che jsonData sia una stringa JSON valida
+        $jsonData = '{}';
+        if (isset($notificationForm['json_data']) && is_scalar($notificationForm['json_data'])) {
+            $jsonData = (string)$notificationForm['json_data'] ?: '{}';
+        }
+        
+        // Creiamo un array con i dati della notifica che rispetta il tipo richiesto
+        /** @var array<non-empty-string, string> $messageDataArray */
+        $messageDataArray = [];
+        
+        // Aggiungiamo sempre il tipo, che è un campo obbligatorio
+        $messageDataArray['type'] = $type;
+         
+        // Aggiungiamo i valori all'array solo se non sono stringhe vuote
         if ($title !== '') {
-            $pushDataTemp['title'] = $title;
+            $messageDataArray['title'] = $title;
         }
         if ($body !== '') {
-            $pushDataTemp['body'] = $body;
+            $messageDataArray['body'] = $body;
         }
-        if ($jsonData !== '') {
-            $pushDataTemp['data'] = $jsonData;
-        }
-        
-        // Verifichiamo che l'array non sia vuoto
-        if (empty($pushDataTemp)) {
-            $pushDataTemp['type'] = 'notification';
+        if ($jsonData !== '{}') {
+            $messageDataArray['data'] = $jsonData;
         }
         
-        // Creiamo un MessageData object
-        $messageData = new \Kreait\Firebase\Messaging\MessageData($pushDataTemp);
+        // Utilizziamo il metodo factory per creare un'istanza di MessageData
+        $messageData = \Kreait\Firebase\Messaging\MessageData::fromArray($messageDataArray);
 
         // Verifichiamo che deviceToken sia una stringa non vuota (per soddisfare il tipo non-empty-string)
         Assert::stringNotEmpty($deviceToken, 'Il token del dispositivo non può essere vuoto');
