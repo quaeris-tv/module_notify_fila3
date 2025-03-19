@@ -145,57 +145,57 @@ class SendPushNotification extends Page implements HasForms
 
     public function sendNotification(): void
     {
-        // Prelevare i valori dal form di notifica
-        $notificationForm = $this->notificationForm->getState();
+        $data = $this->notificationForm->getState();
+        $deviceToken = $data['deviceToken'] ?? '';
+
+        // Verifichiamo che deviceToken sia una stringa non vuota
+        if ($deviceToken === '') {
+            Notification::make()
+                ->danger()
+                ->title('Errore')
+                ->body('Token del dispositivo non valido')
+                ->send();
+            return;
+        }
+
+        // Verifichiamo che i dati siano del tipo corretto
+        $type = $data['type'] ?? '';
+        $title = $data['title'] ?? '';
+        $body = $data['body'] ?? '';
+        $jsonData = isset($data['data']) ? json_encode($data['data']) : '{}';
         
-        // Convertiamo i valori in modo sicuro
-        /** @var array<string, mixed> $notificationForm */
-        $deviceToken = '';
-        if (isset($notificationForm['device_token']) && is_scalar($notificationForm['device_token'])) {
-            $deviceToken = (string)$notificationForm['device_token'];
+        // Verifichiamo che jsonData sia una stringa
+        $jsonData = $jsonData ?: '{}';
+        
+        // Creiamo un array con chiavi non vuote e valori stringa che implementano Stringable
+        $pushDataTemp = [];
+        
+        // Aggiungiamo i valori all'array solo se non sono vuoti
+        // PHPStan sa che queste stringhe non possono essere vuote a questo punto
+        $pushDataTemp['type'] = $type;
+        $pushDataTemp['title'] = $title;
+        $pushDataTemp['body'] = $body;
+        // Adding data field (we know jsonData can't be empty due to fallback to '{}' earlier)
+        $pushDataTemp['data'] = $jsonData;
+        
+        // Verifichiamo che l'array contenga almeno un elemento
+        if (count($pushDataTemp) === 0) {
+            $pushDataTemp['type'] = 'notification';
         }
         
-        $title = '';
-        if (isset($notificationForm['title']) && is_scalar($notificationForm['title'])) {
-            $title = (string)$notificationForm['title'];
+        // Creiamo un MessageData object
+        // Convertiamo tutti i valori in stringa come richiesto da MessageData
+        $sanitizedData = [];
+        foreach ($pushDataTemp as $key => $value) {
+            // All keys are non-empty strings by this point
+            if (is_scalar($value) || is_null($value)) {
+                $sanitizedData[$key] = (string)$value;
+            } else {
+                // Handle non-scalar values (arrays, objects) by converting to JSON
+                $sanitizedData[$key] = (string)json_encode($value);
+            }
         }
-        
-        $body = '';
-        if (isset($notificationForm['body']) && is_scalar($notificationForm['body'])) {
-            $body = (string)$notificationForm['body'];
-        }
-        
-        $type = 'notification';
-        if (isset($notificationForm['type']) && is_scalar($notificationForm['type'])) {
-            $type = (string)$notificationForm['type'];
-        }
-        
-        // Assicuriamoci che jsonData sia una stringa JSON valida
-        $jsonData = '{}';
-        if (isset($notificationForm['json_data']) && is_scalar($notificationForm['json_data'])) {
-            $jsonData = (string)$notificationForm['json_data'] ?: '{}';
-        }
-        
-        // Creiamo un array con i dati della notifica che rispetta il tipo richiesto
-        /** @var array<non-empty-string, string> $messageDataArray */
-        $messageDataArray = [];
-        
-        // Aggiungiamo sempre il tipo, che è un campo obbligatorio
-        $messageDataArray['type'] = $type;
-         
-        // Aggiungiamo i valori all'array solo se non sono stringhe vuote
-        if ($title !== '') {
-            $messageDataArray['title'] = $title;
-        }
-        if ($body !== '') {
-            $messageDataArray['body'] = $body;
-        }
-        if ($jsonData !== '{}') {
-            $messageDataArray['data'] = $jsonData;
-        }
-        
-        // Utilizziamo il metodo factory per creare un'istanza di MessageData
-        $messageData = \Kreait\Firebase\Messaging\MessageData::fromArray($messageDataArray);
+        $messageData = \Kreait\Firebase\Messaging\MessageData::fromArray($sanitizedData);
 
         // Verifichiamo che deviceToken sia una stringa non vuota (per soddisfare il tipo non-empty-string)
         Assert::stringNotEmpty($deviceToken, 'Il token del dispositivo non può essere vuoto');
