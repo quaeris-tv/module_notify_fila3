@@ -64,21 +64,18 @@ class SendPushNotification extends Page implements HasForms
          */
         $callback = function ($item) {
             // Verifichiamo che $item sia un oggetto
-            if (!is_object($item)) {
+            if (!$item) {
                 return [];
             }
             
             // Verifichiamo che $item abbia le proprietà necessarie
-            if (!property_exists($item, 'push_notifications_token') || 
-                !property_exists($item, 'profile') || 
-                !is_object($item->profile) || 
-                !property_exists($item->profile, 'full_name')) {
+            if (!$item->profile || !property_exists($item->profile, 'full_name')) {
                 return [];
             }
             
             // Otteniamo il token
             $token = $item->push_notifications_token;
-            if (!is_string($token) || $token === '') {
+            if (!$token) {
                 return [];
             }
             
@@ -90,11 +87,12 @@ class SendPushNotification extends Page implements HasForms
             
             // Otteniamo il robot
             $robot = '';
-            if (property_exists($item, 'device') && 
-                is_object($item->device) && 
-                property_exists($item->device, 'robot') && 
+            if ($item->device && 
+                property_exists($item->device, 'robot') &&
                 is_string($item->device->robot)) {
                 $robot = $item->device->robot;
+            } else {
+                $robot = null;
             }
             
             // Creiamo la label con gli ultimi 5 caratteri del token
@@ -107,9 +105,7 @@ class SendPushNotification extends Page implements HasForms
          * Callback per filtrare i dispositivi.
          */
         $filterCallback = function ($item): bool {
-            return is_object($item) && 
-                   property_exists($item, 'profile') && 
-                   $item->profile !== null;
+            return $item && $item->profile !== null;
         };
 
         $to = $devices
@@ -189,7 +185,7 @@ class SendPushNotification extends Page implements HasForms
         foreach ($pushDataTemp as $key => $value) {
             // All keys are non-empty strings by this point
             if (is_scalar($value) || is_null($value)) {
-                $sanitizedData[$key] = (string)$value;
+                $sanitizedData[$key] = is_string($value) ? $value : (string) $value;
             } else {
                 // Handle non-scalar values (arrays, objects) by converting to JSON
                 $sanitizedData[$key] = (string)json_encode($value);
@@ -207,8 +203,8 @@ class SendPushNotification extends Page implements HasForms
         try {
             // Otteniamo l'istanza di messaging e verifichiamo che sia valida
             $messaging = app('firebase.messaging');
-            if (!is_object($messaging) || !method_exists($messaging, 'send')) {
-                throw new \RuntimeException('Il servizio firebase.messaging non supporta il metodo send()');
+            if (!$messaging || !method_exists($messaging, 'send')) {
+                throw new \Exception('Invalid messaging instance');
             }
             
             $messaging->send($message);
