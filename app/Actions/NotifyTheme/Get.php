@@ -66,8 +66,8 @@ class Get
 
         $view_params['now'] = now()->format('d/m/Y');
 
-        $body_html = is_string($theme) ? $theme : (string) $theme->body_html;
-        $subject = is_string($theme) ? $theme : (string) $theme->subject;
+        $body_html = $theme->body_html;
+        $subject = $theme->subject;
 
         if ($theme->theme !== 'empty') {
             $view_params['logo'] = $theme->logo;
@@ -85,7 +85,7 @@ class Get
                 if (is_string($theme->logo['width'])) {
                     $logoWidth = $theme->logo['width'];
                 } elseif (is_numeric($theme->logo['width'])) {
-                    $logoWidth = is_string($theme) ? $theme : (string) $theme->logo['width'];
+                    $logoWidth = (string) $theme->logo['width'];
                 }
             }
 
@@ -93,7 +93,7 @@ class Get
                 if (is_string($theme->logo['height'])) {
                     $logoHeight = $theme->logo['height'];
                 } elseif (is_numeric($theme->logo['height'])) {
-                    $logoHeight = is_string($theme) ? $theme : (string) $theme->logo['height'];
+                    $logoHeight = (string) $theme->logo['height'];
                 }
             }
 
@@ -105,8 +105,8 @@ class Get
 
         foreach ($view_params as $k => $v) {
             if (is_string($v)) {
-                $body_html = Str::replace('##'.$k.'##', $v, $body_html);
-                $subject = Str::replace('##'.$k.'##', $v, $subject);
+                $body_html = (string) Str::replace('##'.$k.'##', $v, (string) $body_html);
+                $subject = (string) Str::replace('##'.$k.'##', $v, (string) $subject);
             }
         }
 

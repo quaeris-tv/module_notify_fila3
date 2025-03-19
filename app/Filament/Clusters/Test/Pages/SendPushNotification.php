@@ -16,6 +16,7 @@ use Filament\Pages\Page;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Stringable;
+use Kreait\Firebase\Contract\Messaging;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Modules\Notify\Filament\Clusters\Test;
 use Modules\User\Models\DeviceUser;
@@ -202,10 +203,9 @@ class SendPushNotification extends Page implements HasForms
             
         try {
             // Otteniamo l'istanza di messaging e verifichiamo che sia valida
+            /** @var Messaging $messaging */
             $messaging = app('firebase.messaging');
-            if (!$messaging || !method_exists($messaging, 'send')) {
-                throw new \Exception('Invalid messaging instance');
-            }
+            Assert::isInstanceOf($messaging, Messaging::class, 'Invalid messaging instance');
             
             $messaging->send($message);
         } catch (\Exception $e) {
